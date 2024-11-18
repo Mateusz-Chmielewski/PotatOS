@@ -86,9 +86,23 @@
               "icon": "lucide-file",
               "title": "Zródła"
             }
+          },
+          {
+            "id": "37a55924c164cb1f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Zródła.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Zródła"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -144,7 +158,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 616.5
+    "width": 251.5
   },
   "right": {
     "id": "eb53574e45dc4a61",
@@ -229,7 +243,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c869199c628ddc20",
+  "active": "37a55924c164cb1f",
   "lastOpenFiles": [
     "TODO.md",
     "Qemu.md",

@@ -2,6 +2,7 @@
 #define RCC_H
 
 #include <stdint.h>
+#include "memorymap.h"
 
 struct rcc
 {
@@ -11,6 +12,6 @@ struct rcc
       AHB3LPENR, RESERVED4, APB1LPENR, APB2LPENR, RESERVED5[2], BDCR, CSR,
       RESERVED6[2], SSCGR, PLLI2SCFGR;
 };
-#define RCC ((struct rcc *)0x40023800)
+#define RCC ((struct rcc *)RCC_BASE)
 
 #endif // RCC_H

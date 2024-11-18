@@ -1,6 +1,6 @@
 CFLAGS  ?= -Iinc -Wall -Wextra -mcpu=cortex-m4 -g $(EXTRA_CFLAGS)
 LDFLAGS ?= -T link.ld -nostdlib -Wl,-Map=firmware.map
-SOURCES = src/main.c src/startup.c src/systick.c src/uart.c src/gpio.c src/rcc.c
+SOURCES = src/main.c src/startup.c src/systick.c src/uart.c src/gpio.c src/rcc.c src/vector.c
 
 build: firmware.bin
 

@@ -1,6 +1,5 @@
 // Startup code
 #include "systick.h"
-#include "main.h"
 #include "uart.h"
 
 static char greet[] = "Hello World!\n";

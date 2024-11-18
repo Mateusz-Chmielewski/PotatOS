@@ -2,13 +2,14 @@
 #define GPIO_H
 
 #include <stdint.h>
+#include "memorymap.h"
 
 struct gpio
 {
   volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR, IDR, ODR, BSRR, LCKR, AFR[2];
 };
 
-#define GPIO(bank) ((struct gpio *)0x40020000 + 0x400 * (bank))
+#define GPIO(bank) ((struct gpio *)GPIO_BASE + 0x400 * (bank))
 
 typedef enum
 {
@@ -20,7 +21,7 @@ typedef enum
 
 // represent pin as 2 byte value
 // upper byte is bank, lower byte is pin number
-#define PIN(bank, pin) ((bank - 'A') << 8 + pin)
+#define PIN(bank, pin) (((bank - 'A') << 8) + pin)
 #define PINNO(pin) (pin & 0xff)   // get lower byte(pin number)
 #define PINBANK(pin) ((pin >> 8)) // get upper byte(bank)
 

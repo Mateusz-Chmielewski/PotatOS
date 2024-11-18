@@ -13,7 +13,7 @@ void systick_init(uint32_t ticks)
   RCC->APB2ENR |= BIT(14);
 }
 
-void Systick_Handler(void)
+void sys_tick_handler(void)
 {
   s_ticks++;
 }

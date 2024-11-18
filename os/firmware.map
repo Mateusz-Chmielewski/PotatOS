@@ -10,167 +10,269 @@ sram             0x20000000         0x00020000         xrw
 
 Linker script and memory map
 
-LOAD /tmp/cc1OsL9E.o
-LOAD /tmp/ccFKmCYq.o
-LOAD /tmp/ccJVe1yf.o
-LOAD /tmp/ccgMSVDa.o
-LOAD /tmp/ccUhZ7lZ.o
-LOAD /tmp/ccikqRfb.o
+LOAD /tmp/cc8S8zmo.o
+LOAD /tmp/ccc3yZDs.o
+LOAD /tmp/ccQ3UlIO.o
+LOAD /tmp/cccinK9H.o
+LOAD /tmp/ccKjxlhm.o
+LOAD /tmp/ccYI6JUF.o
+LOAD /tmp/ccwJHlpC.o
                 0x20020000                        _estack = (ORIGIN (sram) + LENGTH (sram))
 
 .vectors        0x08000000      0x188
  *(.vectors)
- .vectors       0x08000000      0x188 /tmp/ccFKmCYq.o
-                0x08000000                tab
+ .vectors       0x08000000      0x188 /tmp/ccc3yZDs.o
+                0x08000000                vector_table
 
-.text           0x08000188      0x404
+.text           0x08000188      0x438
  *(.text*)
- .text          0x08000188       0xb4 /tmp/cc1OsL9E.o
+ .text          0x08000188       0xb4 /tmp/cc8S8zmo.o
                 0x08000188                echo
                 0x080001c4                main
- .text          0x0800023c       0x44 /tmp/ccFKmCYq.o
+ .text          0x0800023c       0x60 /tmp/ccc3yZDs.o
                 0x0800023c                _reset
- .text          0x08000280       0xc0 /tmp/ccJVe1yf.o
-                0x08000280                systick_init
-                0x080002c8                Systick_Handler
-                0x080002ec                systick_get_ticks
-                0x08000304                delay
- .text          0x08000340      0x154 /tmp/ccgMSVDa.o
-                0x08000340                uart_init
-                0x0800042c                print_str
-                0x0800046a                read_byte
- .text          0x08000494       0xf8 /tmp/ccUhZ7lZ.o
-                0x08000494                gpio_set_mode
-                0x080004fa                gpio_set_af
- .text          0x0800058c        0x0 /tmp/ccikqRfb.o
+ .text          0x0800029c       0xc0 /tmp/ccQ3UlIO.o
+                0x0800029c                systick_init
+                0x080002e4                sys_tick_handler
+                0x08000308                systick_get_ticks
+                0x08000320                delay
+ .text          0x0800035c      0x158 /tmp/cccinK9H.o
+                0x0800035c                uart_init
+                0x0800044c                print_str
+                0x0800048a                read_byte
+ .text          0x080004b4       0xf8 /tmp/ccKjxlhm.o
+                0x080004b4                gpio_set_mode
+                0x0800051a                gpio_set_af
+ .text          0x080005ac        0x0 /tmp/ccYI6JUF.o
+ .text          0x080005ac       0x14 /tmp/ccwJHlpC.o
+                0x080005ac                dma2_stream1_isr
+                0x080005ac                tim8_brk_tim12_isr
+                0x080005ac                dma1_stream7_isr
+                0x080005ac                usart3_isr
+                0x080005ac                tim7_isr
+                0x080005ac                dma1_stream2_isr
+                0x080005ac                otg_hs_isr
+                0x080005ac                blocking_handler
+                0x080005ac                tim5_isr
+                0x080005ac                rtc_wkup_isr
+                0x080005ac                otg_fs_isr
+                0x080005ac                spi1_isr
+                0x080005ac                i2c3_er_isr
+                0x080005ac                exti2_isr
+                0x080005ac                tim1_brk__tim9_isr
+                0x080005ac                tamp_stamp_isr
+                0x080005ac                can1_rx1_isr
+                0x080005ac                dma2_stream0_isr
+                0x080005ac                usart1_isr
+                0x080005ac                i2c3_ev_isr
+                0x080005ac                can2_rx0_isr
+                0x080005ac                dma1_stream6_isr
+                0x080005ac                can2_rx1_isr
+                0x080005ac                can1_sce_isr
+                0x080005ac                tim1_cc_isr
+                0x080005ac                can1_tx_isr
+                0x080005ac                sdio_isr
+                0x080005ac                eth_isr
+                0x080005ac                otg_fs_wkup_isr
+                0x080005ac                dma2_stream5_isr
+                0x080005ac                pvd_isr
+                0x080005ac                can1_rx0_isr
+                0x080005ac                sv_call_handler
+                0x080005ac                rcc_isr
+                0x080005ac                dma2_stream3_isr
+                0x080005ac                flash_isr
+                0x080005ac                uart4_isr
+                0x080005ac                rtc_alarm_isr
+                0x080005ac                exti15_10_isr
+                0x080005ac                hash_rng_isr
+                0x080005ac                tim1_trg_com_tim11_isr
+                0x080005ac                hard_fault_handler
+                0x080005ac                exti1_isr
+                0x080005ac                i2c1_ev_isr
+                0x080005ac                usart6_isr
+                0x080005ac                pend_sv_handler
+                0x080005ac                spi2_isr
+                0x080005ac                cryp_isr
+                0x080005ac                dma1_stream1_isr
+                0x080005ac                dma2_stream4_isr
+                0x080005ac                exti3_isr
+                0x080005ac                tim3_isr
+                0x080005ac                usart2_isr
+                0x080005ac                fpu_isr
+                0x080005ac                dma1_stream4_isr
+                0x080005ac                i2c2_er_isr
+                0x080005ac                i2c2_ev_isr
+                0x080005ac                uart5_isr
+                0x080005ac                dma2_stream6_isr
+                0x080005ac                adc_isr
+                0x080005ac                dma2_stream7_isr
+                0x080005ac                tim8_up_tim13_isr
+                0x080005ac                fsmc_isr
+                0x080005ac                exti4_isr
+                0x080005ac                tim6_dac_isr
+                0x080005ac                dma1_stream3_isr
+                0x080005ac                tim8_trg_com_tim14_isr
+                0x080005ac                can2_tx_isr
+                0x080005ac                exti9_5_isr
+                0x080005ac                tim1_up__tim10_isr
+                0x080005ac                can2_sce_isr
+                0x080005ac                tim4_isr
+                0x080005ac                otg_hs_wkup_isr
+                0x080005ac                i2c1_er_isr
+                0x080005ac                nmi_handler
+                0x080005ac                dma1_stream0_isr
+                0x080005ac                tim8_cc_isr
+                0x080005ac                dcmi_isr
+                0x080005ac                dma2_stream2_isr
+                0x080005ac                eth_wkup_isr
+                0x080005ac                wwdg_isr
+                0x080005ac                otg_hs_ep1_out_isr
+                0x080005ac                spi3_isr
+                0x080005ac                dma1_stream5_isr
+                0x080005ac                otg_hs_ep1_in_isr
+                0x080005ac                tim2_isr
+                0x080005ac                exti0_isr
+                0x080005b4                null_handler
 
-.glue_7         0x0800058c        0x0
- .glue_7        0x0800058c        0x0 linker stubs
+.glue_7         0x080005c0        0x0
+ .glue_7        0x080005c0        0x0 linker stubs
 
-.glue_7t        0x0800058c        0x0
- .glue_7t       0x0800058c        0x0 linker stubs
+.glue_7t        0x080005c0        0x0
+ .glue_7t       0x080005c0        0x0 linker stubs
 
-.vfp11_veneer   0x0800058c        0x0
- .vfp11_veneer  0x0800058c        0x0 linker stubs
+.vfp11_veneer   0x080005c0        0x0
+ .vfp11_veneer  0x080005c0        0x0 linker stubs
 
-.v4_bx          0x0800058c        0x0
- .v4_bx         0x0800058c        0x0 linker stubs
+.v4_bx          0x080005c0        0x0
+ .v4_bx         0x080005c0        0x0 linker stubs
 
-.iplt           0x0800058c        0x0
- .iplt          0x0800058c        0x0 /tmp/cc1OsL9E.o
+.iplt           0x080005c0        0x0
+ .iplt          0x080005c0        0x0 /tmp/cc8S8zmo.o
 
-.rodata         0x0800058c       0x12
+.rodata         0x080005c0       0x12
  *(.rodata*)
- .rodata        0x0800058c       0x12 /tmp/cc1OsL9E.o
+ .rodata        0x080005c0       0x12 /tmp/cc8S8zmo.o
 
-.rel.dyn        0x080005a0        0x0
- .rel.iplt      0x080005a0        0x0 /tmp/cc1OsL9E.o
+.rel.dyn        0x080005d4        0x0
+ .rel.iplt      0x080005d4        0x0 /tmp/cc8S8zmo.o
 
-.data           0x20000000       0x55 load address 0x0800059e
+.data           0x20000000       0x55 load address 0x080005d2
                 0x20000000                        _sdata = .
  *(.first_data)
  *(.data SORT_BY_NAME(.data.*))
- .data          0x20000000       0x55 /tmp/cc1OsL9E.o
- .data          0x20000055        0x0 /tmp/ccFKmCYq.o
- .data          0x20000055        0x0 /tmp/ccJVe1yf.o
- .data          0x20000055        0x0 /tmp/ccgMSVDa.o
- .data          0x20000055        0x0 /tmp/ccUhZ7lZ.o
- .data          0x20000055        0x0 /tmp/ccikqRfb.o
+ .data          0x20000000       0x55 /tmp/cc8S8zmo.o
+ .data          0x20000055        0x0 /tmp/ccc3yZDs.o
+ .data          0x20000055        0x0 /tmp/ccQ3UlIO.o
+ .data          0x20000055        0x0 /tmp/cccinK9H.o
+ .data          0x20000055        0x0 /tmp/ccKjxlhm.o
+ .data          0x20000055        0x0 /tmp/ccYI6JUF.o
+ .data          0x20000055        0x0 /tmp/ccwJHlpC.o
                 0x20000055                        _edata = .
-                0x0800059e                        _sidata = LOADADDR (.data)
+                0x080005d2                        _sidata = LOADADDR (.data)
 
-.igot.plt       0x20000058        0x0 load address 0x080005f3
- .igot.plt      0x20000058        0x0 /tmp/cc1OsL9E.o
+.igot.plt       0x20000058        0x0 load address 0x08000627
+ .igot.plt      0x20000058        0x0 /tmp/cc8S8zmo.o
 
-.bss            0x20000058       0x18 load address 0x080005f3
+.bss            0x20000058       0x10 load address 0x08000627
                 0x20000058                        _sbss = .
  *(.bss SORT_BY_NAME(.bss.*) COMMON)
- .bss           0x20000058        0x8 /tmp/cc1OsL9E.o
- .bss           0x20000060        0x8 /tmp/ccFKmCYq.o
- .bss           0x20000068        0x8 /tmp/ccJVe1yf.o
- .bss           0x20000070        0x0 /tmp/ccgMSVDa.o
- .bss           0x20000070        0x0 /tmp/ccUhZ7lZ.o
- .bss           0x20000070        0x0 /tmp/ccikqRfb.o
-                0x20000070                        _ebss = .
-                0x20000070                        . = ALIGN (0x8)
-                0x20000070                        _end = .
+ .bss           0x20000058        0x8 /tmp/cc8S8zmo.o
+ .bss           0x20000060        0x0 /tmp/ccc3yZDs.o
+ .bss           0x20000060        0x8 /tmp/ccQ3UlIO.o
+ .bss           0x20000068        0x0 /tmp/cccinK9H.o
+ .bss           0x20000068        0x0 /tmp/ccKjxlhm.o
+ .bss           0x20000068        0x0 /tmp/ccYI6JUF.o
+ .bss           0x20000068        0x0 /tmp/ccwJHlpC.o
+                0x20000068                        _ebss = .
+                0x20000068                        . = ALIGN (0x8)
+                0x20000068                        _end = .
 OUTPUT(firmware.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000      0xcfe
- .debug_info    0x00000000      0x260 /tmp/cc1OsL9E.o
- .debug_info    0x00000260      0x16b /tmp/ccFKmCYq.o
- .debug_info    0x000003cb      0x305 /tmp/ccJVe1yf.o
- .debug_info    0x000006d0      0x3da /tmp/ccgMSVDa.o
- .debug_info    0x00000aaa      0x1ef /tmp/ccUhZ7lZ.o
- .debug_info    0x00000c99       0x65 /tmp/ccikqRfb.o
+.debug_info     0x00000000      0xfdd
+ .debug_info    0x00000000      0x267 /tmp/cc8S8zmo.o
+ .debug_info    0x00000267      0x3ee /tmp/ccc3yZDs.o
+ .debug_info    0x00000655      0x305 /tmp/ccQ3UlIO.o
+ .debug_info    0x0000095a      0x3e1 /tmp/cccinK9H.o
+ .debug_info    0x00000d3b      0x1ef /tmp/ccKjxlhm.o
+ .debug_info    0x00000f2a       0x65 /tmp/ccYI6JUF.o
+ .debug_info    0x00000f8f       0x4e /tmp/ccwJHlpC.o
 
-.debug_abbrev   0x00000000      0x655
- .debug_abbrev  0x00000000      0x15e /tmp/cc1OsL9E.o
- .debug_abbrev  0x0000015e      0x10f /tmp/ccFKmCYq.o
- .debug_abbrev  0x0000026d      0x133 /tmp/ccJVe1yf.o
- .debug_abbrev  0x000003a0      0x178 /tmp/ccgMSVDa.o
- .debug_abbrev  0x00000518      0x117 /tmp/ccUhZ7lZ.o
- .debug_abbrev  0x0000062f       0x26 /tmp/ccikqRfb.o
+.debug_abbrev   0x00000000      0x6a7
+ .debug_abbrev  0x00000000      0x15e /tmp/cc8S8zmo.o
+ .debug_abbrev  0x0000015e      0x127 /tmp/ccc3yZDs.o
+ .debug_abbrev  0x00000285      0x133 /tmp/ccQ3UlIO.o
+ .debug_abbrev  0x000003b8      0x178 /tmp/cccinK9H.o
+ .debug_abbrev  0x00000530      0x117 /tmp/ccKjxlhm.o
+ .debug_abbrev  0x00000647       0x26 /tmp/ccYI6JUF.o
+ .debug_abbrev  0x0000066d       0x3a /tmp/ccwJHlpC.o
 
-.debug_aranges  0x00000000       0xb8
+.debug_aranges  0x00000000       0xd8
  .debug_aranges
-                0x00000000       0x20 /tmp/cc1OsL9E.o
+                0x00000000       0x20 /tmp/cc8S8zmo.o
  .debug_aranges
-                0x00000020       0x20 /tmp/ccFKmCYq.o
+                0x00000020       0x20 /tmp/ccc3yZDs.o
  .debug_aranges
-                0x00000040       0x20 /tmp/ccJVe1yf.o
+                0x00000040       0x20 /tmp/ccQ3UlIO.o
  .debug_aranges
-                0x00000060       0x20 /tmp/ccgMSVDa.o
+                0x00000060       0x20 /tmp/cccinK9H.o
  .debug_aranges
-                0x00000080       0x20 /tmp/ccUhZ7lZ.o
+                0x00000080       0x20 /tmp/ccKjxlhm.o
  .debug_aranges
-                0x000000a0       0x18 /tmp/ccikqRfb.o
+                0x000000a0       0x18 /tmp/ccYI6JUF.o
+ .debug_aranges
+                0x000000b8       0x20 /tmp/ccwJHlpC.o
 
 .debug_line     0x00000000      0x4a9
- .debug_line    0x00000000       0xc9 /tmp/cc1OsL9E.o
- .debug_line    0x000000c9       0xc7 /tmp/ccFKmCYq.o
- .debug_line    0x00000190       0xd6 /tmp/ccJVe1yf.o
- .debug_line    0x00000266      0x13d /tmp/ccgMSVDa.o
- .debug_line    0x000003a3       0xdc /tmp/ccUhZ7lZ.o
- .debug_line    0x0000047f       0x2a /tmp/ccikqRfb.o
+ .debug_line    0x00000000       0xc9 /tmp/cc8S8zmo.o
+ .debug_line    0x000000c9       0x84 /tmp/ccc3yZDs.o
+ .debug_line    0x0000014d       0xd6 /tmp/ccQ3UlIO.o
+ .debug_line    0x00000223      0x13d /tmp/cccinK9H.o
+ .debug_line    0x00000360       0xdc /tmp/ccKjxlhm.o
+ .debug_line    0x0000043c       0x2a /tmp/ccYI6JUF.o
+ .debug_line    0x00000466       0x43 /tmp/ccwJHlpC.o
 
-.debug_str      0x00000000      0x39a
- .debug_str     0x00000000      0x39a /tmp/cc1OsL9E.o
-                                0x1b0 (size before relaxing)
- .debug_str     0x0000039a      0x172 /tmp/ccFKmCYq.o
- .debug_str     0x0000039a      0x27e /tmp/ccJVe1yf.o
- .debug_str     0x0000039a      0x2b2 /tmp/ccgMSVDa.o
- .debug_str     0x0000039a      0x1c0 /tmp/ccUhZ7lZ.o
- .debug_str     0x0000039a      0x117 /tmp/ccikqRfb.o
+.debug_str      0x00000000      0x8b1
+ .debug_str     0x00000000      0x8b1 /tmp/cc8S8zmo.o
+                                0x1bc (size before relaxing)
+ .debug_str     0x000008b1      0x5e9 /tmp/ccc3yZDs.o
+ .debug_str     0x000008b1      0x27f /tmp/ccQ3UlIO.o
+ .debug_str     0x000008b1      0x2be /tmp/cccinK9H.o
+ .debug_str     0x000008b1      0x1c0 /tmp/ccKjxlhm.o
+ .debug_str     0x000008b1      0x117 /tmp/ccYI6JUF.o
+ .debug_str     0x000008b1       0xc1 /tmp/ccwJHlpC.o
 
 .comment        0x00000000       0x26
- .comment       0x00000000       0x26 /tmp/cc1OsL9E.o
+ .comment       0x00000000       0x26 /tmp/cc8S8zmo.o
                                  0x27 (size before relaxing)
- .comment       0x00000026       0x27 /tmp/ccFKmCYq.o
- .comment       0x00000026       0x27 /tmp/ccJVe1yf.o
- .comment       0x00000026       0x27 /tmp/ccgMSVDa.o
- .comment       0x00000026       0x27 /tmp/ccUhZ7lZ.o
- .comment       0x00000026       0x27 /tmp/ccikqRfb.o
+ .comment       0x00000026       0x27 /tmp/ccc3yZDs.o
+ .comment       0x00000026       0x27 /tmp/ccQ3UlIO.o
+ .comment       0x00000026       0x27 /tmp/cccinK9H.o
+ .comment       0x00000026       0x27 /tmp/ccKjxlhm.o
+ .comment       0x00000026       0x27 /tmp/ccYI6JUF.o
+ .comment       0x00000026       0x27 /tmp/ccwJHlpC.o
 
 .ARM.attributes
                 0x00000000       0x2e
  .ARM.attributes
-                0x00000000       0x2e /tmp/cc1OsL9E.o
+                0x00000000       0x2e /tmp/cc8S8zmo.o
  .ARM.attributes
-                0x0000002e       0x2e /tmp/ccFKmCYq.o
+                0x0000002e       0x2e /tmp/ccc3yZDs.o
  .ARM.attributes
-                0x0000005c       0x2e /tmp/ccJVe1yf.o
+                0x0000005c       0x2e /tmp/ccQ3UlIO.o
  .ARM.attributes
-                0x0000008a       0x2e /tmp/ccgMSVDa.o
+                0x0000008a       0x2e /tmp/cccinK9H.o
  .ARM.attributes
-                0x000000b8       0x2e /tmp/ccUhZ7lZ.o
+                0x000000b8       0x2e /tmp/ccKjxlhm.o
  .ARM.attributes
-                0x000000e6       0x2e /tmp/ccikqRfb.o
+                0x000000e6       0x2e /tmp/ccYI6JUF.o
+ .ARM.attributes
+                0x00000114       0x2e /tmp/ccwJHlpC.o
 
-.debug_frame    0x00000000      0x1f8
- .debug_frame   0x00000000       0x54 /tmp/cc1OsL9E.o
- .debug_frame   0x00000054       0x20 /tmp/ccFKmCYq.o
- .debug_frame   0x00000074       0xa0 /tmp/ccJVe1yf.o
- .debug_frame   0x00000114       0x84 /tmp/ccgMSVDa.o
- .debug_frame   0x00000198       0x60 /tmp/ccUhZ7lZ.o
+.debug_frame    0x00000000      0x250
+ .debug_frame   0x00000000       0x54 /tmp/cc8S8zmo.o
+ .debug_frame   0x00000054       0x30 /tmp/ccc3yZDs.o
+ .debug_frame   0x00000084       0xa0 /tmp/ccQ3UlIO.o
+ .debug_frame   0x00000124       0x84 /tmp/cccinK9H.o
+ .debug_frame   0x000001a8       0x60 /tmp/ccKjxlhm.o
+ .debug_frame   0x00000208       0x48 /tmp/ccwJHlpC.o

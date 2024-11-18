@@ -2,6 +2,7 @@
 #define UART_H
 
 #include <stdint.h>
+#include "memory.h"
 #define FREQ 16000000 // CPU frequency, 16 Mhz
 
 struct uart
@@ -9,9 +10,9 @@ struct uart
   volatile uint32_t SR, DR, BRR, CR1, CR2, CR3, GTPR;
 };
 
-#define UART1 ((struct uart *)0x40011000)
-#define UART2 ((struct uart *)0x40004400)
-#define UART3 ((struct uart *)0x40004800)
+#define UART1 ((struct uart *)UART1_BASE)
+#define UART2 ((struct uart *)UART2_BASE)
+#define UART3 ((struct uart *)UART3_BASE)
 #define USART_FLAG_TXE ((uint16_t)0x0080)
 #define USART_FLAG_RXNE ((uint16_t)0x0020)
 
