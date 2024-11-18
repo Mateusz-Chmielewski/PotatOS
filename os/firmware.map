@@ -1,0 +1,176 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x08000000         0x00100000         xr
+sram             0x20000000         0x00020000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /tmp/cc1OsL9E.o
+LOAD /tmp/ccFKmCYq.o
+LOAD /tmp/ccJVe1yf.o
+LOAD /tmp/ccgMSVDa.o
+LOAD /tmp/ccUhZ7lZ.o
+LOAD /tmp/ccikqRfb.o
+                0x20020000                        _estack = (ORIGIN (sram) + LENGTH (sram))
+
+.vectors        0x08000000      0x188
+ *(.vectors)
+ .vectors       0x08000000      0x188 /tmp/ccFKmCYq.o
+                0x08000000                tab
+
+.text           0x08000188      0x404
+ *(.text*)
+ .text          0x08000188       0xb4 /tmp/cc1OsL9E.o
+                0x08000188                echo
+                0x080001c4                main
+ .text          0x0800023c       0x44 /tmp/ccFKmCYq.o
+                0x0800023c                _reset
+ .text          0x08000280       0xc0 /tmp/ccJVe1yf.o
+                0x08000280                systick_init
+                0x080002c8                Systick_Handler
+                0x080002ec                systick_get_ticks
+                0x08000304                delay
+ .text          0x08000340      0x154 /tmp/ccgMSVDa.o
+                0x08000340                uart_init
+                0x0800042c                print_str
+                0x0800046a                read_byte
+ .text          0x08000494       0xf8 /tmp/ccUhZ7lZ.o
+                0x08000494                gpio_set_mode
+                0x080004fa                gpio_set_af
+ .text          0x0800058c        0x0 /tmp/ccikqRfb.o
+
+.glue_7         0x0800058c        0x0
+ .glue_7        0x0800058c        0x0 linker stubs
+
+.glue_7t        0x0800058c        0x0
+ .glue_7t       0x0800058c        0x0 linker stubs
+
+.vfp11_veneer   0x0800058c        0x0
+ .vfp11_veneer  0x0800058c        0x0 linker stubs
+
+.v4_bx          0x0800058c        0x0
+ .v4_bx         0x0800058c        0x0 linker stubs
+
+.iplt           0x0800058c        0x0
+ .iplt          0x0800058c        0x0 /tmp/cc1OsL9E.o
+
+.rodata         0x0800058c       0x12
+ *(.rodata*)
+ .rodata        0x0800058c       0x12 /tmp/cc1OsL9E.o
+
+.rel.dyn        0x080005a0        0x0
+ .rel.iplt      0x080005a0        0x0 /tmp/cc1OsL9E.o
+
+.data           0x20000000       0x55 load address 0x0800059e
+                0x20000000                        _sdata = .
+ *(.first_data)
+ *(.data SORT_BY_NAME(.data.*))
+ .data          0x20000000       0x55 /tmp/cc1OsL9E.o
+ .data          0x20000055        0x0 /tmp/ccFKmCYq.o
+ .data          0x20000055        0x0 /tmp/ccJVe1yf.o
+ .data          0x20000055        0x0 /tmp/ccgMSVDa.o
+ .data          0x20000055        0x0 /tmp/ccUhZ7lZ.o
+ .data          0x20000055        0x0 /tmp/ccikqRfb.o
+                0x20000055                        _edata = .
+                0x0800059e                        _sidata = LOADADDR (.data)
+
+.igot.plt       0x20000058        0x0 load address 0x080005f3
+ .igot.plt      0x20000058        0x0 /tmp/cc1OsL9E.o
+
+.bss            0x20000058       0x18 load address 0x080005f3
+                0x20000058                        _sbss = .
+ *(.bss SORT_BY_NAME(.bss.*) COMMON)
+ .bss           0x20000058        0x8 /tmp/cc1OsL9E.o
+ .bss           0x20000060        0x8 /tmp/ccFKmCYq.o
+ .bss           0x20000068        0x8 /tmp/ccJVe1yf.o
+ .bss           0x20000070        0x0 /tmp/ccgMSVDa.o
+ .bss           0x20000070        0x0 /tmp/ccUhZ7lZ.o
+ .bss           0x20000070        0x0 /tmp/ccikqRfb.o
+                0x20000070                        _ebss = .
+                0x20000070                        . = ALIGN (0x8)
+                0x20000070                        _end = .
+OUTPUT(firmware.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0xcfe
+ .debug_info    0x00000000      0x260 /tmp/cc1OsL9E.o
+ .debug_info    0x00000260      0x16b /tmp/ccFKmCYq.o
+ .debug_info    0x000003cb      0x305 /tmp/ccJVe1yf.o
+ .debug_info    0x000006d0      0x3da /tmp/ccgMSVDa.o
+ .debug_info    0x00000aaa      0x1ef /tmp/ccUhZ7lZ.o
+ .debug_info    0x00000c99       0x65 /tmp/ccikqRfb.o
+
+.debug_abbrev   0x00000000      0x655
+ .debug_abbrev  0x00000000      0x15e /tmp/cc1OsL9E.o
+ .debug_abbrev  0x0000015e      0x10f /tmp/ccFKmCYq.o
+ .debug_abbrev  0x0000026d      0x133 /tmp/ccJVe1yf.o
+ .debug_abbrev  0x000003a0      0x178 /tmp/ccgMSVDa.o
+ .debug_abbrev  0x00000518      0x117 /tmp/ccUhZ7lZ.o
+ .debug_abbrev  0x0000062f       0x26 /tmp/ccikqRfb.o
+
+.debug_aranges  0x00000000       0xb8
+ .debug_aranges
+                0x00000000       0x20 /tmp/cc1OsL9E.o
+ .debug_aranges
+                0x00000020       0x20 /tmp/ccFKmCYq.o
+ .debug_aranges
+                0x00000040       0x20 /tmp/ccJVe1yf.o
+ .debug_aranges
+                0x00000060       0x20 /tmp/ccgMSVDa.o
+ .debug_aranges
+                0x00000080       0x20 /tmp/ccUhZ7lZ.o
+ .debug_aranges
+                0x000000a0       0x18 /tmp/ccikqRfb.o
+
+.debug_line     0x00000000      0x4a9
+ .debug_line    0x00000000       0xc9 /tmp/cc1OsL9E.o
+ .debug_line    0x000000c9       0xc7 /tmp/ccFKmCYq.o
+ .debug_line    0x00000190       0xd6 /tmp/ccJVe1yf.o
+ .debug_line    0x00000266      0x13d /tmp/ccgMSVDa.o
+ .debug_line    0x000003a3       0xdc /tmp/ccUhZ7lZ.o
+ .debug_line    0x0000047f       0x2a /tmp/ccikqRfb.o
+
+.debug_str      0x00000000      0x39a
+ .debug_str     0x00000000      0x39a /tmp/cc1OsL9E.o
+                                0x1b0 (size before relaxing)
+ .debug_str     0x0000039a      0x172 /tmp/ccFKmCYq.o
+ .debug_str     0x0000039a      0x27e /tmp/ccJVe1yf.o
+ .debug_str     0x0000039a      0x2b2 /tmp/ccgMSVDa.o
+ .debug_str     0x0000039a      0x1c0 /tmp/ccUhZ7lZ.o
+ .debug_str     0x0000039a      0x117 /tmp/ccikqRfb.o
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 /tmp/cc1OsL9E.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 /tmp/ccFKmCYq.o
+ .comment       0x00000026       0x27 /tmp/ccJVe1yf.o
+ .comment       0x00000026       0x27 /tmp/ccgMSVDa.o
+ .comment       0x00000026       0x27 /tmp/ccUhZ7lZ.o
+ .comment       0x00000026       0x27 /tmp/ccikqRfb.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e /tmp/cc1OsL9E.o
+ .ARM.attributes
+                0x0000002e       0x2e /tmp/ccFKmCYq.o
+ .ARM.attributes
+                0x0000005c       0x2e /tmp/ccJVe1yf.o
+ .ARM.attributes
+                0x0000008a       0x2e /tmp/ccgMSVDa.o
+ .ARM.attributes
+                0x000000b8       0x2e /tmp/ccUhZ7lZ.o
+ .ARM.attributes
+                0x000000e6       0x2e /tmp/ccikqRfb.o
+
+.debug_frame    0x00000000      0x1f8
+ .debug_frame   0x00000000       0x54 /tmp/cc1OsL9E.o
+ .debug_frame   0x00000054       0x20 /tmp/ccFKmCYq.o
+ .debug_frame   0x00000074       0xa0 /tmp/ccJVe1yf.o
+ .debug_frame   0x00000114       0x84 /tmp/ccgMSVDa.o
+ .debug_frame   0x00000198       0x60 /tmp/ccUhZ7lZ.o

@@ -1,0 +1,30 @@
+#ifndef GPIO_H
+#define GPIO_H
+
+#include <stdint.h>
+
+struct gpio
+{
+  volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR, IDR, ODR, BSRR, LCKR, AFR[2];
+};
+
+#define GPIO(bank) ((struct gpio *)0x40020000 + 0x400 * (bank))
+
+typedef enum
+{
+  GPIO_MODE_IN = 0,
+  GPIO_MODE_OUT = 1,
+  GPIO_MODE_AF = 2,
+  GPIO_MODE_AN = 3,
+} gpio_mode;
+
+// represent pin as 2 byte value
+// upper byte is bank, lower byte is pin number
+#define PIN(bank, pin) ((bank - 'A') << 8 + pin)
+#define PINNO(pin) (pin & 0xff)   // get lower byte(pin number)
+#define PINBANK(pin) ((pin >> 8)) // get upper byte(bank)
+
+void gpio_set_mode(uint16_t pin, gpio_mode mode);
+void gpio_set_af(uint16_t pin, uint8_t af);
+
+#endif // GPIO_H
