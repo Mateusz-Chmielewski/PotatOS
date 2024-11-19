@@ -93,12 +93,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Zródła.md",
+                "file": "OS'y.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Zródła"
+              "title": "OS'y"
             }
           }
         ],
@@ -246,9 +246,12 @@
   "active": "37a55924c164cb1f",
   "lastOpenFiles": [
     "TODO.md",
-    "Qemu.md",
     "OS'y.md",
     "Zródła.md",
+    "Qemu.md",
+    "attachments/Pasted image 20241118230703.png",
+    "attachments/Pasted image 20241118230606.png",
+    "attachments/Pasted image 20241118230554.png",
     "attachments/Pasted image 20241117160010.png",
     "attachments/Pasted image 20241117160427.png",
     "attachments/Pasted image 20241117155803.png",

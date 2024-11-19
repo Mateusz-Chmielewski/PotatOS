@@ -8,6 +8,7 @@
     "rcc.h": "c",
     "gpio.h": "c",
     "common.h": "c",
-    "vector.h": "c"
+    "vector.h": "c",
+    "ringbuffer.h": "c"
   }
 }

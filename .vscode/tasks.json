@@ -4,20 +4,20 @@
     {
       "type": "shell",
       "label": "build",
-      "command": "make",
+      "command": "make -C ${workspaceFolder}/os",
       "problemMatcher": ["$gcc"]
     },
     {
       "type": "shell",
       "label": "clean",
-      "command": "make clean"
+      "command": "make -C ${workspaceFolder}/os clean"
     },
     {
       "type": "shell",
       "label": "run dbg",
       //nie działa
       //"command": "make rundbg",
-      "command": "echo 'QEMU started'; qemu-system-arm -M netduinoplus2 -s -S -kernel ${workspaceFolder}/firmware.elf",
+      "command": "echo 'QEMU started'; qemu-system-arm -M netduinoplus2 -s -S -kernel ${workspaceFolder}/os/firmware.elf",
       "dependsOn": ["build"],
       "isBackground": true,
       //sprawdzamy czy qemu wystartował

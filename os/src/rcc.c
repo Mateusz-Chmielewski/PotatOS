@@ -1,3 +1,3 @@
 #include "rcc.h"
 
-// TODO
+// TODO: qemu doesnt support RCC that much

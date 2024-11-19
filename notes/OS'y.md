@@ -54,7 +54,7 @@ W arm oprogramowanie musi skopiować segment .data do ramu i wyczyścić segment
 funcja startu kopiuje segment .data do ramu, inicjalizuje segment .bss zerami
 
 
-
+![[Pasted image 20241118230606.png]]
 
 ## MCU boot and vector table
 - kiedy arm mcu bootuje się czyta vector table z początku pamięci flash
@@ -66,6 +66,8 @@ funcja startu kopiuje segment .data do ramu, inicjalizuje segment .bss zerami
     - adress funkcji bootujące do wykonania 
 
 więc trzeba wpisać do 2 wpisu vector table address naszej funkcji bootującej. Kiedy mcu bootuje się odczyta adress z pamięci flash i skoczy do naszej funkcji bootującej.
+
+
 
 
 
@@ -215,3 +217,24 @@ SysTick może działać w oparciu o zegar systemowy (System Clock, np. HCLK) lub
 
 ### Przykład działania:
 Jeśli zegar systemowy wynosi 48 MHz, a SysTick jest ustawiony na HCLK/8 (czyli 6 MHz), to wartość `LOAD = 5999` spowoduje generowanie przerwań co 1 ms (6 MHz / 6000 = 1 kHz, czyli 1 ms).
+
+![[Pasted image 20241118230703.png]]
+
+
+# NVIC
+
+nested vectored interrupt controller. 
+
+włączanie obsługi przerwań od peryferiów, trzeba ustawić odpowiedni bit, przy starcie wszystko jest wyłączone, więc jak chcemy np obsłużyć interrupt uart1 trzeba w rejestrze NVIC_ISER1 ustawić bit 5.  nvic pozwala na ustawienie priorytetów przerwań
+
+informacje o tym znajdują się w programing manualu do m4
+https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf
+
+
+### NVIC Registers Overview
+
+- **NVIC_ISER**X (Interrupt Set-Enable Register): Enables specific interrupts.
+    - Each bit in this register corresponds to an IRQ number.
+- **NVIC_IPR**X (Interrupt Priority Registers): allow you to set the priority of interrupts. STM32 supports 16 priority levels (though some versions may support fewer)
+
+For **USART1**, the IRQ number (e.g., `USART1_IRQn`) is typically **37** for the STM32F4 series.

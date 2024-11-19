@@ -26,3 +26,15 @@ monitor: ctrl-A, C
 -s pozwól na połączenia tcp na porcie 1234
 -S freeze mcu
 
+
+
+## Qemu Supported devices
+ - ARM Cortex-M3, Cortex M4F
+ - Analog to Digital Converter (ADC)
+ - EXTI interrupt
+ - Serial ports (USART)
+ - SPI controller
+ - System configuration (SYSCFG)
+ - Timer controller (TIMER)
+ - Reset and Clock Controller (RCC) (STM32F4 only, reset and enable only)
+
