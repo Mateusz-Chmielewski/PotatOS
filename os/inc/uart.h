@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include "memory.h"
 #include <stdbool.h>
-#define FREQ 16000000 // CPU frequency, 16 Mhz
 
 struct uart
 {

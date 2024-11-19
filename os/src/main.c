@@ -41,17 +41,18 @@ uint32_t length(const char *str)
 
 void clock_init(void)
 {
-  // Wlaczenie HSI, wpisanie wartosci 1
-  RCC->CR |= BIT(0);
+  // 8hz HSI
+  /*  // Wlaczenie HSI, wpisanie wartosci 1
+   RCC->CR |= BIT(0);
 
-  while (!(RCC->CR & BIT(1)))
-    ;
+   while (!(RCC->CR & BIT(1)))
+     ;
 
-  // clear 2 first bytes
-  // set HSI as clock source
-  RCC->CFGR &= ~(0x3);
-  RCC->PLLCFGR = (uint32_t)0x24003010;
-  RCC->CIR = 0x00000000;
+   // clear 2 first bytes
+   // set HSI as clock source
+   RCC->CFGR = (uint32_t)0x00000000;
+   RCC->PLLCFGR = (uint32_t)0x24003010;
+   RCC->CIR = 0x00000000; */
 }
 
 int main(void)
@@ -62,8 +63,6 @@ int main(void)
   // clock_init();
   // wziązku z tym systick średnio działa
 
-  // disable uart1 clock
-
   uart_init(UART1, 9600);
   usart_write(UART1, greet, length(greet));
   usart_write(UART1, monitor, length(monitor));
@@ -71,23 +70,28 @@ int main(void)
 
   // echo(UART1);
 
-  systick_init(16000000 / 1000); // Tick every 1 ms
+  systick_init(FREQ / 1000); // Tick every 1 ms
   uint64_t current_time = systick_get_ticks();
-
+  char x[2];
+  x[0] = 'a';
+  x[1] = '\n';
   while (1)
   {
     // task1
-    if (systick_get_ticks() - current_time >= 10000)
+    if (systick_get_ticks() - current_time >= 1000)
     {
-      usart_write(UART1, greet, length(greet));
+      usart_write(UART1, &x, 2);
+      x[0]++;
+      if (x[0] > 'z')
+        x[0] = 'a';
       current_time = systick_get_ticks();
     }
-    delay(30000);
+    // delay(3000);
 
     // task2
     echo(UART1);
 
-    delay(30000);
+    // delay(1000);
   }
   return 0;
 }
