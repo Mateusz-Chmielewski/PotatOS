@@ -107,12 +107,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "renode.md",
+                "file": "OS'y.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "renode"
+              "title": "OS'y"
             }
           }
         ],
@@ -259,9 +259,13 @@
   },
   "active": "459741bf0dba1817",
   "lastOpenFiles": [
-    "Zródła.md",
+    "attachments/Pasted image 20241119235546.png",
+    "attachments/Pasted image 20241119234033.png",
+    "attachments/Pasted image 20241119234019.png",
     "renode.md",
     "OS'y.md",
+    "Untitled",
+    "Zródła.md",
     "TODO.md",
     "Qemu.md",
     "attachments/Pasted image 20241118230703.png",

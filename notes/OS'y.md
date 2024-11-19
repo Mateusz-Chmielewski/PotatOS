@@ -1,3 +1,92 @@
+
+## ARMv7
+http://fiona.dmcs.p.lodz.pl/arm/slajdy/slajdy2.pdf
+
+### Rejestry
+
+ARMv7 ma zestaw **16 podstawowych rejestrów widocznych dla programu**, oznaczonych jako **R0–R15**, oraz kilka specjalnych rejestrów do zarządzania stanem procesora. Podstawowy zestaw rejestrów jest podzielony na następujące kategorie:
+
+r0-r12 Rejestry ogólnego przeznaczenia
+r11 fp 
+r13 sp  - stack pointer, Wskazuje na bieżącą pozycję na stosie.
+r14 lr  - link register, Przechowuje adres powrotu do funkcji wywołującej po zakończeniu wykonywania funkcji.
+r15 pc  - program counter. Przechowuje adres bieżącej instrukcji lub instrukcji, która ma być wykonana jako następna.
+## specjalne
+cpsr -  current program status register. Przechowuje bieżący stan procesora.
+   Kluczowe pola:
+	- **N** (Negative): Wynik operacji arytmetycznej jest ujemny.
+	- **Z** (Zero): Wynik operacji wynosi zero.
+	- **C** (Carry): Wynik operacji generuje przeniesienie.
+	- **V** (Overflow): Wynik operacji powoduje przepełnienie.
+	- **M** (Mode): Określa tryb procesora (np. użytkownika, FIQ, IRQ, supervisor).
+	- **T** (Thumb): Określa, czy procesor pracuje w trybie Thumb.
+
+
+Procesor ARM posiada łącznie 37 rejestrów (wszystkie są 32 bitowe) 
+Nie wszystkie rejestry są dostępne w różnych trybach uprzywilejowania procesora
+W procesorach ARM zastosowano mechanizm bankowania rejestrów. Zmiana trybu pracy procesora powoduje podmienienie części rejestrów. Pozwala to na implementację oddzielnego stosu dla każdego trybu pracy, co znacząco podnosi stabilność systemu. Zmiana trybu pracy odbywa się automatycznie lub przez modyfikację rejestru CPSR (pole Mode)
+
+![[Pasted image 20241119234019.png]]
+
+
+![[Pasted image 20241119234033.png]]
+
+### **instrukcje ARM i Thumb**
+- ARMv7 wspiera dwa zestawy instrukcji:
+    - **ARM** – pełny zestaw 32-bitowych instrukcji.
+    - **Thumb** – zestaw 16-bitowych instrukcji, które są bardziej skondensowane, co pozwala zaoszczędzić pamięć, kosztem nieco mniejszej wydajności.
+
+
+# Wyjątki
+
+- Wyjątki dzielimy na:
+	 - przerwania (ang. interrupts), 
+	 - niepowodzenia (ang. fault),
+	 -  błędy nienaprawialne (ang. abort),
+	 - pułapki (ang. trap).
+	 - 
+- Procesory ARM obsługują dwa rodzaje przerwań:
+	- FIQ (Fast interrupt) – przerwania z szybką obsługą,
+	- IRQ (Interrupt) – przerwania normalne
+
+ - **Przerwanie** (ang. interrupt) lub żądanie przerwania (IRQ – Interrupt ReQuest) – sygnał powodujący zmianę przepływu sterowania, niezależnie od aktualnie wykonywanego programu. Pojawienie się przerwania powoduje wstrzymanie aktualnie wykonywanego programu i wykonanie przez procesor kodu procedury obsługi przerwania, uchwytu przerwania (ang. interrupt handler)
+
+- W procesorach ARM wystąpienie przerwania powoduje ustawienie flagi w rejestrze statusowym sygnalizującej żądanie obsługi przerwania. Jeżeli system przerwań jest aktywny (rdzeń procesora) oraz dane przerwanie nie jest zamaskowane (sterownik przerwań) następuje przyjęcie przerwania przez procesor - skok do programu obsługującego przerwanie
+
+- Wykonanie niedozwolonej operacji przez procesor w danym stanie uprzywilejowania powoduje wygenerowanie wyjątku.
+
+## Model programowy – dostępne tryby pracy procesora
+
+**Tryb pracy procesora (operating mode), tryb ochrony** - określa jakie zasoby procesora są dostępne, np. dostępne rejestry, obszary pamięci, urządzenia peryferyjne.
+
+### Procesory ARM mogą pracować w jednym z siedmiu trybów pracy: 
+
+**User** – tryb użytkownika (nieuprzywilejowany) przeznaczony do wykonywania programów użytkownika, brak dostępu blokowania przerwań
+**FIQ** – tryb obsługujący przerwania i wyjątki o wysokich priorytetach (szybki) – wykorzystywany do obsługi czasowo krytycznych przerwań (operacje czasu rzeczywistego)
+**IRQ** – obsługa przerwań z niskim prirytetem (low/normal priority)
+**Supervisor** – tryb pracy superużytkownika, dostęp do wszystkich zasobów procesora (dostępny po resecie lub przerwanie programowe), przerwania programowe (instrukcja SWI)
+**Abort** – obsługa wyjątków związanych z pamięcią (memory access violations)
+**Undef** (undifined mode)– obsługa nieznanych/błędnych rozkazów
+**System** – tryb pracy superużytkownika, dostęp do rejestrów takich jak w trybie User jednak możliwy dostęp do różnych obszarów pamięci – wykorzystywany przez system operacyjny
+
+
+# ARMv7 vs ARMv8
+ - **ARMv8** wprowadza wsparcie dla **64-bitowego trybu pracy** AArch64 (64-bit) 
+	-   Został wprowadzony tryb **AArch64**, który umożliwia przetwarzanie 64-bitowych instrukcji i adresów pamięci.
+	- ARMv8 pozostaje kompatybilne z trybem 32-bitowym **AArch32**, który działa tak samo, jak w **ARMv7**.
+ - **ARMv8** oferuje **wbudowane wsparcie dla wirtualizacji**
+ - Nowy model uprzywilejowania (Exception Levels - EL)
+	-  **Poziom EL0** – Aplikacje użytkownika działają w tym trybie (tak jak tryb **User** w ARMv7).
+	- **Poziom EL1** – System operacyjny (jądro) działa w tym trybie, z pełnym dostępem do zasobów sprzętowych.
+	- **Poziom EL2** – Hyperwizor do zarządzania wirtualizacją. ARMv8 wprowadza wsparcie dla **wirtualizacji**, umożliwiając uruchamianie maszyn wirtualnych.
+	- **Poziom EL3** – Monitor bezpieczeństwa (np. ARM **TrustZone**), zarządzający przełączaniem między światem zaufanym i niezaufanym.
+ - Nowe instrukcje i rozszerzenia
+	 - **Advanced SIMD** i **NEON** (optymalizowane do obliczeń wektorowych i multimedialnych)
+	 - **AES (Advanced Encryption Standard)**, **SHA-1/2** oraz inne **instrukcje kryptograficzne** zostały dodane w celu przyspieszenia operacji szyfrowania i haszowania.
+- Zwiększenie liczby rejestrów
+	- **ARMv8** wprowadza **32 64-bitowe rejestry ogólnego przeznaczenia**
+
+
 ## cross-kompilator
 sudo apt install gcc-arm-none-eabi
 
@@ -204,6 +293,8 @@ while ((RCC->CFGR & RCC_CFGR_SWS)!= RCC_CFGR_SWS_PLL); // Potwierdzenie
 # SysTick timer (STK)
 https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf#page246
 
+Timer – urządzenie peryferyjne procesora przeznaczone do odmierzania określonych przedziałów czasu (zliczania elementarnych cykli zegarowych). Po odmierzeniu wymaganego okresu czasu timer zwykle generuje przerwanie. Timery wykorzystywane są do odmierzania czasu systemowego, przełączania wątków, generacji opóźnień.
+
 - sprzętowy timer wbudowany w rdzeń procesora
 - służy do generowania okresowych przerwań
 - często używany do odmierzania czasu, opóźnień
@@ -238,3 +329,11 @@ https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and
 - **NVIC_IPR**X (Interrupt Priority Registers): allow you to set the priority of interrupts. STM32 supports 16 priority levels (though some versions may support fewer)
 
 For **USART1**, the IRQ number (e.g., `USART1_IRQn`) is typically **37** for the STM32F4 series.
+
+
+http://fiona.dmcs.p.lodz.pl/arm/slajdy/slajdy3.pdf
+
+![[Pasted image 20241119235546.png]]
+
+
+
