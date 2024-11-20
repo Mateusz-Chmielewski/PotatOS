@@ -1,0 +1,7 @@
+FROM antmicro/renode
+COPY ./firmware.elf /renode/
+COPY ./stm32.resc /renode/
+
+
+ENTRYPOINT ["renode", "--console", "/renode/stm32.resc"]
+

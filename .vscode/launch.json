@@ -48,6 +48,23 @@
         "reveal": "silent",
         "close": true,
       }
-    }
+    },
+    {
+      "name": "Renode Debug",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/os/firmware.elf",
+      "request": "launch",
+      "type": "cppdbg",
+      "miDebuggerServerAddress": "localhost:3333",
+      "miDebuggerPath": "/usr/bin/gdb-multiarch",
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+  }
   ]
 }

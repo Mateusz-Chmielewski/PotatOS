@@ -1,11 +1,12 @@
 using sysbus
 
 #https://github.com/renode/renode/blob/master/platforms/cpus/stm32f4.repl
-$bin_path?="../firmware.elf"
+$bin_path?="/renode/firmware.elf"
 
 
 mach create "stm32"
 machine LoadPlatformDescription @platforms/cpus/stm32f4.repl
+
 showAnalyzer usart1
 machine StartGdbServer 3333
 
