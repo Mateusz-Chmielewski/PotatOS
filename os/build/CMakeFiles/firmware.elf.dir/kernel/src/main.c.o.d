@@ -18,4 +18,5 @@ CMakeFiles/firmware.elf.dir/kernel/src/main.c.o: \
  /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h

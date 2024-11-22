@@ -25,19 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 49,
+				"line" : 52,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
 				"line" : 41,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 42,
 				"parent" : 0
 			}
 		]
@@ -55,11 +49,15 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc"
+					"path" : "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc"
 				}
 			],
 			"language" : "C",

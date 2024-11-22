@@ -38,8 +38,11 @@ set(SOURCES
 )
 
 # Include directories
-include_directories(drivers/inc)
-include_directories(kernel/inc)
+include_directories(
+  ${CMAKE_SOURCE_DIR}
+  ${CMAKE_SOURCE_DIR}/kernel/inc
+  ${CMAKE_SOURCE_DIR}/drivers/inc
+)
 
 # Compiler flags
 set(CMAKE_C_FLAGS "-Wall -Wextra -mcpu=${MCU_ARCH} -D${STM32_MCU} -g -nostdlib")

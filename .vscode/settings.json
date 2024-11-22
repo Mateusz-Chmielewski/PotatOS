@@ -9,7 +9,8 @@
     "gpio.h": "c",
     "common.h": "c",
     "vector.h": "c",
-    "ringbuffer.h": "c"
+    "ringbuffer.h": "c",
+    "systick.h": "c"
   },
   "cmake.sourceDirectory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os",
   "cmake.buildDirectory": "${workspaceFolder}/os/build"

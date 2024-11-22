@@ -61,6 +61,7 @@ CMakeFiles/firmware.elf.dir/kernel/src/main.c.o: /mnt/c/Users/igors/Desktop/stud
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/systick.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h \
   /usr/include/newlib/_ansi.h \
   /usr/include/newlib/_newlib_version.h \
   /usr/include/newlib/machine/_default_types.h \
@@ -135,6 +136,8 @@ CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o: /mnt/c/Users/igors/Desktop/s
 /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h:
 
 /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h:
+
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h:
 
 /usr/include/newlib/newlib.h:
 
