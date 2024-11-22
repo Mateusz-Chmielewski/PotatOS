@@ -1,0 +1,6 @@
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/firmware.elf.dir
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/rung.dir
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/run.dir
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/rundbg.dir
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles/rebuild_cache.dir

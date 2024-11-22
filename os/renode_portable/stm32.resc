@@ -1,7 +1,7 @@
 using sysbus
 
 #https://github.com/renode/renode/blob/master/platforms/cpus/stm32f4.repl
-$bin_path?="../firmware.elf"
+$bin_path?="../build/firmware.elf"
 
 
 mach create "stm32"

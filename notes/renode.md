@@ -16,6 +16,6 @@ działa na dockerze i lokalnie
 
 1.  docker build -t stm ./
 
-2.  docker create --name stm-container -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -ti -p 3333:3333 stm
+2.  docker create --name stm-container -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v ./build:/app/build -ti -p 3333:3333 stm
 
 3.  docker start -ai stm-container

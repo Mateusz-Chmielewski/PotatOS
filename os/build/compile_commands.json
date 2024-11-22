@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/kernel/src/main.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/main.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/main.c",
+  "output": "CMakeFiles/firmware.elf.dir/kernel/src/main.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/startup.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/startup.c",
+  "output": "CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/gpio.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/gpio.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/rcc.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/rcc.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/vector.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/vector.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/ringbuffer.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/ringbuffer.c",
+  "output": "CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o"
+}
+]
