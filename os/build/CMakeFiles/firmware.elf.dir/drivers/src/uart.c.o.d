@@ -1,7 +1,11 @@
 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o: \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h \
  /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/memorymap.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
  /usr/include/newlib/memory.h /usr/include/newlib/string.h \
  /usr/include/newlib/_ansi.h /usr/include/newlib/newlib.h \
  /usr/include/newlib/_newlib_version.h /usr/include/newlib/sys/config.h \
@@ -14,8 +18,6 @@ CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o: \
  /usr/include/newlib/sys/lock.h /usr/include/newlib/sys/_locale.h \
  /usr/include/newlib/strings.h /usr/include/newlib/sys/string.h \
  /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/memorymap.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h

@@ -4,7 +4,7 @@
 # compile C with arm-none-eabi-gcc
 C_DEFINES = 
 
-C_INCLUDES = -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc
+C_INCLUDES = -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc
 
 C_FLAGS = -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g
 

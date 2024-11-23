@@ -13,5 +13,6 @@
     "systick.h": "c"
   },
   "cmake.sourceDirectory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os",
-  "cmake.buildDirectory": "${workspaceFolder}/os/build"
+  "cmake.buildDirectory": "${workspaceFolder}/os/build",
+  "C_Cpp.errorSquiggles": "disabled"
 }

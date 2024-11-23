@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "memorymap.h"
+#include "common.h"
 
 struct rcc
 {
@@ -13,5 +14,44 @@ struct rcc
       RESERVED6[2], SSCGR, PLLI2SCFGR;
 };
 #define RCC ((struct rcc *)RCC_BASE)
+
+/*
+periphal clocks need to be enable, after reset the clock is disabled
+*/
+
+// enable functions
+/*RCC AHB1 */
+void rcc_gpioa_enable(void);
+
+void rcc_gpioa_disable(void);
+
+/*RCC APB1 */
+void rcc_usart2_enable(void);
+void rcc_usart3_enable(void);
+
+void rcc_usart2_disable(void);
+void rcc_usart3_disable(void);
+
+/*RCC APB2 */
+void rcc_usart1_enable(void);
+void rcc_syscfg_enable(void);
+
+void rcc_usart1_disable(void);
+void rcc_syscfg_disable(void);
+
+/*
+defines name for the bits positions in registers
+*/
+
+/*RCC AHB1 */
+#define RCC_AHB1ENR_GPIOA BIT(0)
+
+/*RCC APB1 */
+#define RCC_APB1ENR_USART2 BIT(17)
+#define RCC_APB1ENR_USART3 BIT(18)
+
+/*RCC APB2 */
+#define RCC_APB2ENR_USART1 BIT(4)
+#define RCC_APB2ENR_SYSCFG BIT(14)
 
 #endif // RCC_H

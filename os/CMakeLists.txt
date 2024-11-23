@@ -39,7 +39,6 @@ set(SOURCES
 
 # Include directories
 include_directories(
-  ${CMAKE_SOURCE_DIR}
   ${CMAKE_SOURCE_DIR}/kernel/inc
   ${CMAKE_SOURCE_DIR}/drivers/inc
 )

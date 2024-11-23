@@ -18,19 +18,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 76,
+				"line" : 68,
 				"parent" : 0
 			}
 		]
 	},
-	"dependencies" : 
-	[
-		{
-			"id" : "firmware.elf::@6890427a1f51a3e7e1df"
-		}
-	],
-	"id" : "rundbg::@6890427a1f51a3e7e1df",
-	"name" : "rundbg",
+	"id" : "run::@6890427a1f51a3e7e1df",
+	"name" : "run",
 	"paths" : 
 	{
 		"build" : ".",
@@ -58,13 +52,13 @@
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/rundbg",
+			"path" : "build/CMakeFiles/run",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/rundbg.rule",
+			"path" : "build/CMakeFiles/run.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

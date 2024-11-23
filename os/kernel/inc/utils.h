@@ -1,28 +1,28 @@
 #include <stdint.h>
 #include <stdbool.h>
-#include "drivers/inc/uart.h"
+#include "uart.h"
 
-void echo(struct uart *uart)
+void echo(struct uart_handle_t *uart)
 {
-  while (usart_data_available(UART1))
+  while (usart_data_available(uart))
   {
-    char buf[2];
+    uint8_t buf[2];
     uint8_t x;
-    (void)usart_read(UART1, &x, 1);
+    (void)usart_read(uart, &x, 1);
     buf[0] = x;
     buf[1] = '\0';
     if (x == 13)
     {
-      usart_write(UART1, "\n", 1);
+      usart_write(uart, (uint8_t *)"\n", 1);
     }
     else
     {
-      usart_write(UART1, buf, 1);
+      usart_write(uart, buf, 1);
     }
   }
 }
 
-uint32_t length(const char *str)
+uint32_t length(const uint8_t *str)
 {
   uint32_t len = 0;
   while (*str)

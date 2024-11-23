@@ -6,11 +6,11 @@
 void systick_init(uint32_t ticks)
 {
   if ((ticks - 1) > 0xffffff)
-    return; // Systick timer is 24 bit
-  SYSTICK->LOAD = ticks - 1;
-  SYSTICK->VAL = 0;
-  SYSTICK->CTRL = BIT(0) | BIT(1) | BIT(2); // Enable systick
-  RCC->APB2ENR |= BIT(14);                  // Enable clock for SYSTICK
+    return;                                                                            // Systick timer is 24 bit
+  SYSTICK->LOAD = ticks - 1;                                                           // Set reload register
+  SYSTICK->VAL = 0;                                                                    // Clear current value
+  SYSTICK->CTRL = SYSTICK_CTRL_ENABLE | SYSTICK_CTRL_TICKINT | SYSTICK_CTRL_CLKSOURCE; // Enable systick
+  rcc_syscfg_enable();                                                                 // Enable clock for SYSTICK
 }
 
 void sys_tick_handler(void)

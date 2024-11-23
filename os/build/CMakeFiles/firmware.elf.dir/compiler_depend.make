@@ -7,6 +7,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o: /mnt/c/Users/igors/Desktop/stu
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h
 
 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/rcc.c \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/memorymap.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h
@@ -59,6 +60,7 @@ CMakeFiles/firmware.elf.dir/kernel/src/main.c.o: /mnt/c/Users/igors/Desktop/stud
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/memorymap.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/systick.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h \
