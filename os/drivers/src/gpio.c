@@ -1,10 +1,12 @@
 #include "gpio.h"
+#include "rcc.h"
 
 void gpio_set_mode(uint16_t pin, gpio_mode mode)
 {
   struct gpio *gpio = GPIO(PINBANK(pin));
   uint8_t pinno = PINNO(pin);
-  gpio->MODER &= ~(3 << (pinno * 2));
+  RCC->AHB1ENR |= BIT(PINBANK(pin)); // Enable GPIO clock
+  gpio->MODER &= ~(3U << (pinno * 2));
   gpio->MODER |= (mode & 3) << (pinno * 2);
 }
 
@@ -14,6 +16,12 @@ void gpio_set_af(uint16_t pin, uint8_t af)
 {
   struct gpio *gpio = GPIO(PINBANK(pin));
   uint8_t pinno = PINNO(pin);
-  gpio->AFR[pinno / 8] &= ~(0xf << ((pinno & 7) * 4));
-  gpio->AFR[pinno / 8] |= ((uint32_t)af) << ((pinno & 7) * 4);
+  gpio->AFR[pinno >> 3] &= ~(15UL << ((pinno & 7) * 4));
+  gpio->AFR[pinno >> 3] |= ((uint32_t)af) << ((pinno & 7) * 4);
+}
+
+void gpio_write(uint16_t pin, bool val)
+{
+  struct gpio *gpio = GPIO(PINBANK(pin));
+  gpio->BSRR = (1U << PINNO(pin)) << (val ? 0 : 16);
 }

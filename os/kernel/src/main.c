@@ -10,15 +10,11 @@
 #include "system_calls.h"
 #include "scb.h"
 
-static uint8_t greet[] = "Hello World!\n";
-static uint8_t exit[] = "Press ctrl-A then X to exit\n";
-static uint8_t monitor[] = "Press ctrl-A then C to open monitor\n";
-static uint8_t greet2[] = "Hello World 2!\n";
-static uint8_t greet3[] = "usart sys call write!\n";
+static uint8_t greet[] = "Hello in kernel!\n";
 
-extern uart_handle_t uart1 = {UART1, 0};
-extern uart_handle_t uart2 = {UART2, 0};
-extern uart_handle_t uart3 = {UART3, 0};
+uart_handle_t uart1 = {UART1, 0};
+uart_handle_t uart2 = {UART2, 0};
+uart_handle_t uart3 = {UART3, 0};
 
 #define TASK_STACK_SIZE 1024 // Size of the task stack in words (adjust as needed)
 
@@ -111,6 +107,7 @@ __attribute((naked)) void osSwitchSPToPSP(void)
 
 #define TASK_INVALID_ID_STATE 0
 #define TASK_READY_STATE 1
+#define TASK_BLOCKED_STATE 2
 
 #define MAX_TASKS 10
 #define TASK_STACK_SIZER 4096U
@@ -118,6 +115,7 @@ typedef struct
 {
   uint32_t osTCB_PSPValue;
   uint32_t osTCB_CURRENTState;
+  uint32_t osTCB_BlockCount;
   void (*osTCB_Task)(void);
 } osTaskControlBlock_t;
 
@@ -169,7 +167,7 @@ uint32_t osCreateThread(void (*osTCB_task)(void))
     {
       osTaskControlBlock[i].osTCB_Task = osTCB_task;
       osTaskControlBlock[i].osTCB_CURRENTState = TASK_READY_STATE;
-      osTaskControlBlock[i].osTCB_PSPValue = SRAM_END - (i + 1) * TASK_STACK_SIZE;
+      osTaskControlBlock[i].osTCB_PSPValue = SRAM_END - (i + 4) * TASK_STACK_SIZE;
       pSP = (uint32_t *)osTaskControlBlock[i].osTCB_PSPValue;
       pSP--; // xPSR
       *pSP = (uint32_t)0x01000000;
@@ -200,26 +198,93 @@ void osDeleteThread()
   SCB->ICSR |= SCB_ICSR_PENDSVSET;
 }
 
+static volatile uint64_t s_ticks = 0;
+
+static volatile uint64_t current = 0;
+
+// FREQ/1000 - Tick every 1 ms so s_ticks will be incremented every 1 ms
+// 1 second = 1000 ms, so 1000 ms / 1 ms = 1000 ticks
+
+void sys_tick_handler(void)
+{
+  s_ticks++;
+
+  // unblock tasks
+  for (int i = 0; i < MAX_TASKS; i++)
+  {
+    if (osTaskControlBlock[i].osTCB_CURRENTState == TASK_BLOCKED_STATE)
+    {
+      if (osTaskControlBlock[i].osTCB_BlockCount == s_ticks)
+      {
+        osTaskControlBlock[i].osTCB_CURRENTState = TASK_READY_STATE;
+      }
+    }
+  }
+
+  /* // swtich task every 1s
+  if (s_ticks - current > 1000)
+  {
+    current = s_ticks;
+    SCB->ICSR |= SCB_ICSR_PENDSVSET;
+  } */
+
+  SCB->ICSR |= SCB_ICSR_PENDSVSET;
+}
+
+uint64_t systick_get_ticks(void)
+{
+  return s_ticks;
+}
+
+void osDelay(uint32_t tick_count)
+{
+  if (osCurrentTaks)
+  { // osCurrentTask == 0 means it is an idle task
+    osTaskControlBlock[osCurrentTaks].osTCB_BlockCount = systick_get_ticks() + tick_count;
+    osTaskControlBlock[osCurrentTaks].osTCB_CURRENTState = TASK_BLOCKED_STATE;
+
+    // trigger pendsv exception
+    SCB->ICSR |= SCB_ICSR_PENDSVSET;
+  }
+}
+
 void task1(void)
 {
-  char *msg = "Task 1\n";
+  char *msg = "Task 1 -- ";
+  char msg2[2] = {'a', '\n'};
 
   while (1)
   {
-    usart_write(&uart1, msg, length(msg));
-    delay(10);
+    usart_write(&uart1, (uint8_t *)msg, length(msg));
+    usart_write(&uart1, (uint8_t *)msg2, 2);
+
+    msg2[0]++;
+    if (msg2[0] > 'z')
+    {
+      msg2[0] = 'a';
+    }
+    osDelay(1000);
   }
 }
 
 void task2(void)
 {
 
-  char *msg = "Task 2\n";
+  char *msg = "Task 2 -- ";
+  char msg2[2] = {'0', '\n'};
 
   while (1)
   {
-    usart_write(&uart1, msg, length(msg));
-    delay(10);
+    usart_write(&uart3, (uint8_t *)msg, length(msg));
+    usart_write(&uart3, (uint8_t *)msg2, 2);
+
+    msg2[0]++;
+
+    if (msg2[0] > '9')
+    {
+      msg2[0] = '0';
+    }
+    osDelay(2000);
   }
 }
 
@@ -228,10 +293,11 @@ void idleTask(void)
 
   char *msg = "idle task\n";
 
+  usart_write(&uart1, (uint8_t *)msg, length(msg));
+
   while (1)
   {
-    usart_write(&uart1, msg, length(msg));
-    delay(10);
+    echo(&uart2);
   };
 }
 
@@ -242,11 +308,11 @@ int main(void)
   rcc_gpioa_enable();
   rcc_usart1_enable();
   rcc_usart2_enable();
-  // rcc_usart3_enable();
+  rcc_usart3_enable();
 
   uart_init(&uart1, 9600U);
   uart_init(&uart2, 9600U);
-  // uart_init(&uart3, 9600U);
+  uart_init(&uart3, 9600U);
 
   usart_write(&uart1, greet, length(greet));
 

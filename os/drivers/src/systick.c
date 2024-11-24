@@ -13,21 +13,10 @@ void systick_init(uint32_t ticks)
   SYSTICK->CTRL |= SYSTICK_CTRL_ENABLE | SYSTICK_CTRL_TICKINT | SYSTICK_CTRL_CLKSOURCE; // Enable systick
   rcc_syscfg_enable();                                                                  // Enable clock for SYSTICK
 }
-
-void sys_tick_handler(void)
-{
-  s_ticks++;
-  SCB->ICSR |= SCB_ICSR_PENDSVSET;
-}
-
-uint64_t systick_get_ticks(void)
-{
-  return s_ticks;
-}
-
+/*
 void delay(uint32_t ms)
 {
   uint32_t until = s_ticks + ms; // Time in a future when we need to stop
   while (s_ticks < until)
     (void)0;
-}
+} */

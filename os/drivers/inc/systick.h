@@ -18,12 +18,11 @@ struct systick
 #define SYSTICK_CTRL_TICKINT BIT(1)   // enables interrupt
 #define SYSTICK_CTRL_CLKSOURCE BIT(2) // clock source selection (0: external, 1: processor clock)
 
-static volatile uint64_t s_ticks = 0;
-
 void systick_init(uint32_t ticks);
 
-void sys_tick_handler(void);
+/* void sys_tick_handler(void);
 uint64_t systick_get_ticks(void);
-void delay(uint32_t ms);
+
+void delay(uint32_t ms); */
 
 #endif // SYSTICK_H

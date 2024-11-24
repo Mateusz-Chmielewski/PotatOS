@@ -7,6 +7,8 @@ $bin_path?="../build/firmware.elf"
 mach create "stm32"
 machine LoadPlatformDescription @platforms/cpus/stm32f4.repl
 showAnalyzer usart1
+showAnalyzer usart2
+showAnalyzer usart3
 machine StartGdbServer 3333
 
 
