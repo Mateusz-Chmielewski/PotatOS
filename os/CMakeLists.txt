@@ -29,6 +29,8 @@ set(LINKER      "${CMAKE_CURRENT_SOURCE_DIR}/kernel/link.ld")
 set(SOURCES
     kernel/src/main.c
     kernel/src/startup.c
+    kernel/src/mpu.c
+    kernel/src/system_calls.c
     drivers/src/systick.c
     drivers/src/uart.c
     drivers/src/gpio.c
@@ -77,6 +79,17 @@ add_custom_target(rundbg
     DEPENDS firmware.elf
     COMMENT "Running firmware.elf in QEMU with debugging enabled"
 )
+
+#open gdb on 3333 and run firmware.elf use gdb-mulitarch
+add_custom_target(gdb
+    COMMAND gdb-multiarch firmware.elf -ex "target remote localhost:3333"
+    DEPENDS firmware.elf
+    COMMENT "Running firmware.elf in GDB"
+)
+
+
+
+
 
 # Clean target
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "firmware.bin;firmware.elf;firmware.map")

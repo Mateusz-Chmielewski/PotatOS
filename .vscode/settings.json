@@ -10,7 +10,11 @@
     "common.h": "c",
     "vector.h": "c",
     "ringbuffer.h": "c",
-    "systick.h": "c"
+    "systick.h": "c",
+    "cstdint": "cpp",
+    "system_calls.h": "c",
+    "utils.h": "c",
+    "scb.h": "c"
   },
   "cmake.sourceDirectory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os",
   "cmake.buildDirectory": "${workspaceFolder}/os/build",

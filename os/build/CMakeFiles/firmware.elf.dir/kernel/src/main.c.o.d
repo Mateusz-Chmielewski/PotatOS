@@ -21,4 +21,8 @@ CMakeFiles/firmware.elf.dir/kernel/src/main.c.o: \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/gpio.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/utils.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/mpu.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/control.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/system_calls.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/scb.h

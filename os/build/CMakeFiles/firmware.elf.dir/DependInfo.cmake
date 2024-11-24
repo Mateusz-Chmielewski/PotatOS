@@ -15,7 +15,9 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c" "CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o" "gcc" "CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o.d"
   "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/vector.c" "CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o" "gcc" "CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o.d"
   "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/main.c" "CMakeFiles/firmware.elf.dir/kernel/src/main.c.o" "gcc" "CMakeFiles/firmware.elf.dir/kernel/src/main.c.o.d"
+  "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/mpu.c" "CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o" "gcc" "CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o.d"
   "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/startup.c" "CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o" "gcc" "CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o.d"
+  "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/system_calls.c" "CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o" "gcc" "CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

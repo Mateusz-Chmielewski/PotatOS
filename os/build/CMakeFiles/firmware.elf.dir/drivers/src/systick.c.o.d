@@ -5,4 +5,5 @@ CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o: \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/memorymap.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/rcc.h \
- /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/common.h \
+ /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/scb.h

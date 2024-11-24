@@ -18,7 +18,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -36,7 +37,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -45,28 +47,35 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "firmware.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-firmware.elf-Debug-cfb454bff9b65445f023.json",
+					"jsonFile" : "target-firmware.elf-Debug-c8725f9876d042f7da12.json",
 					"name" : "firmware.elf",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "gdb::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gdb-Debug-c290b83dc906c711717e.json",
+					"name" : "gdb",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "run::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-run-Debug-3b46a74ddc960b580466.json",
+					"jsonFile" : "target-run-Debug-be27399dc5dce3684a0c.json",
 					"name" : "run",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "rundbg::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-rundbg-Debug-237996849cefec393085.json",
+					"jsonFile" : "target-rundbg-Debug-2a26f875d4bf4ae61608.json",
 					"name" : "rundbg",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "rung::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-rung-Debug-ff4ee1084be6c868d02f.json",
+					"jsonFile" : "target-rung-Debug-e4f4ee2c96c9442f7079.json",
 					"name" : "rung",
 					"projectIndex" : 0
 				}

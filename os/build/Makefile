@@ -168,6 +168,19 @@ rundbg/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rundbg.dir/build.make CMakeFiles/rundbg.dir/build
 .PHONY : rundbg/fast
 
+#=============================================================================
+# Target rules for targets named gdb
+
+# Build rule for target.
+gdb: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gdb
+.PHONY : gdb
+
+# fast build rule for target.
+gdb/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gdb.dir/build.make CMakeFiles/gdb.dir/build
+.PHONY : gdb/fast
+
 drivers/src/gpio.o: drivers/src/gpio.c.o
 .PHONY : drivers/src/gpio.o
 
@@ -336,6 +349,30 @@ kernel/src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/main.c.s
 .PHONY : kernel/src/main.c.s
 
+kernel/src/mpu.o: kernel/src/mpu.c.o
+.PHONY : kernel/src/mpu.o
+
+# target to build an object file
+kernel/src/mpu.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+.PHONY : kernel/src/mpu.c.o
+
+kernel/src/mpu.i: kernel/src/mpu.c.i
+.PHONY : kernel/src/mpu.i
+
+# target to preprocess a source file
+kernel/src/mpu.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.i
+.PHONY : kernel/src/mpu.c.i
+
+kernel/src/mpu.s: kernel/src/mpu.c.s
+.PHONY : kernel/src/mpu.s
+
+# target to generate assembly for a file
+kernel/src/mpu.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.s
+.PHONY : kernel/src/mpu.c.s
+
 kernel/src/startup.o: kernel/src/startup.c.o
 .PHONY : kernel/src/startup.o
 
@@ -360,6 +397,30 @@ kernel/src/startup.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/startup.c.s
 .PHONY : kernel/src/startup.c.s
 
+kernel/src/system_calls.o: kernel/src/system_calls.c.o
+.PHONY : kernel/src/system_calls.o
+
+# target to build an object file
+kernel/src/system_calls.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+.PHONY : kernel/src/system_calls.c.o
+
+kernel/src/system_calls.i: kernel/src/system_calls.c.i
+.PHONY : kernel/src/system_calls.i
+
+# target to preprocess a source file
+kernel/src/system_calls.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.i
+.PHONY : kernel/src/system_calls.c.i
+
+kernel/src/system_calls.s: kernel/src/system_calls.c.s
+.PHONY : kernel/src/system_calls.s
+
+# target to generate assembly for a file
+kernel/src/system_calls.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.s
+.PHONY : kernel/src/system_calls.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -368,6 +429,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... gdb"
 	@echo "... run"
 	@echo "... rundbg"
 	@echo "... rung"
@@ -393,9 +455,15 @@ help:
 	@echo "... kernel/src/main.o"
 	@echo "... kernel/src/main.i"
 	@echo "... kernel/src/main.s"
+	@echo "... kernel/src/mpu.o"
+	@echo "... kernel/src/mpu.i"
+	@echo "... kernel/src/mpu.s"
 	@echo "... kernel/src/startup.o"
 	@echo "... kernel/src/startup.i"
 	@echo "... kernel/src/startup.s"
+	@echo "... kernel/src/system_calls.o"
+	@echo "... kernel/src/system_calls.i"
+	@echo "... kernel/src/system_calls.s"
 .PHONY : help
 
 

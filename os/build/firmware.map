@@ -5,277 +5,339 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 flash            0x08000000         0x00100000         xr
-sram             0x20000000         0x00020000         xrw
+sram             0x20000000         0x0001c000         xrw
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 LOAD CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 LOAD CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+LOAD CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+LOAD CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
 LOAD CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
-                0x20020000                        _estack = (ORIGIN (sram) + LENGTH (sram))
+                0x2001c000                        _estack = (ORIGIN (sram) + LENGTH (sram))
 
 .vectors        0x08000000      0x188
  *(.vectors)
  .vectors       0x08000000      0x188 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
                 0x08000000                vector_table
 
-.text           0x08000188      0x8c4
+.text           0x08000188      0xf90
  *(.text*)
- .text          0x08000188      0x180 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .text          0x08000188      0x638 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
                 0x08000188                echo
                 0x080001e4                length
                 0x08000212                clock_init
-                0x0800021e                main
- .text          0x08000308       0x60 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
-                0x08000308                _reset
- .text          0x08000368       0xb0 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
-                0x08000368                systick_init
-                0x080003a0                sys_tick_handler
-                0x080003c4                systick_get_ticks
-                0x080003dc                delay
- .text          0x08000418      0x320 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
-                0x08000418                uart_init
-                0x08000594                usart1_isr
-                0x080005d0                usart2_isr
-                0x0800060c                usart3_isr
-                0x08000648                usart_write
-                0x08000682                usart_write_byte
-                0x080006b0                usart_read
-                0x08000704                usart_data_available
- .text          0x08000738       0xf8 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
-                0x08000738                gpio_set_mode
-                0x0800079e                gpio_set_af
- .text          0x08000830      0x118 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
-                0x08000830                rcc_gpioa_enable
-                0x0800084c                rcc_gpioa_disable
-                0x08000868                rcc_usart2_enable
-                0x08000884                rcc_usart3_enable
-                0x080008a0                rcc_usart2_disable
-                0x080008bc                rcc_usart3_disable
-                0x080008d8                rcc_usart1_enable
-                0x080008f4                rcc_syscfg_enable
-                0x08000910                rcc_syscfg_disable
-                0x0800092c                rcc_usart1_disable
- .text          0x08000948       0x14 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
-                0x08000948                dma2_stream1_isr
-                0x08000948                tim8_brk_tim12_isr
-                0x08000948                dma1_stream7_isr
-                0x08000948                tim7_isr
-                0x08000948                dma1_stream2_isr
-                0x08000948                otg_hs_isr
-                0x08000948                blocking_handler
-                0x08000948                tim5_isr
-                0x08000948                rtc_wkup_isr
-                0x08000948                otg_fs_isr
-                0x08000948                spi1_isr
-                0x08000948                i2c3_er_isr
-                0x08000948                exti2_isr
-                0x08000948                tim1_brk__tim9_isr
-                0x08000948                tamp_stamp_isr
-                0x08000948                can1_rx1_isr
-                0x08000948                dma2_stream0_isr
-                0x08000948                i2c3_ev_isr
-                0x08000948                can2_rx0_isr
-                0x08000948                dma1_stream6_isr
-                0x08000948                can2_rx1_isr
-                0x08000948                can1_sce_isr
-                0x08000948                tim1_cc_isr
-                0x08000948                can1_tx_isr
-                0x08000948                sdio_isr
-                0x08000948                eth_isr
-                0x08000948                otg_fs_wkup_isr
-                0x08000948                dma2_stream5_isr
-                0x08000948                pvd_isr
-                0x08000948                can1_rx0_isr
-                0x08000948                sv_call_handler
-                0x08000948                rcc_isr
-                0x08000948                dma2_stream3_isr
-                0x08000948                flash_isr
-                0x08000948                uart4_isr
-                0x08000948                rtc_alarm_isr
-                0x08000948                exti15_10_isr
-                0x08000948                hash_rng_isr
-                0x08000948                tim1_trg_com_tim11_isr
-                0x08000948                hard_fault_handler
-                0x08000948                exti1_isr
-                0x08000948                i2c1_ev_isr
-                0x08000948                usart6_isr
-                0x08000948                pend_sv_handler
-                0x08000948                spi2_isr
-                0x08000948                cryp_isr
-                0x08000948                dma1_stream1_isr
-                0x08000948                dma2_stream4_isr
-                0x08000948                exti3_isr
-                0x08000948                tim3_isr
-                0x08000948                fpu_isr
-                0x08000948                dma1_stream4_isr
-                0x08000948                i2c2_er_isr
-                0x08000948                i2c2_ev_isr
-                0x08000948                uart5_isr
-                0x08000948                dma2_stream6_isr
-                0x08000948                adc_isr
-                0x08000948                dma2_stream7_isr
-                0x08000948                tim8_up_tim13_isr
-                0x08000948                fsmc_isr
-                0x08000948                exti4_isr
-                0x08000948                tim6_dac_isr
-                0x08000948                dma1_stream3_isr
-                0x08000948                tim8_trg_com_tim14_isr
-                0x08000948                can2_tx_isr
-                0x08000948                exti9_5_isr
-                0x08000948                tim1_up__tim10_isr
-                0x08000948                can2_sce_isr
-                0x08000948                tim4_isr
-                0x08000948                otg_hs_wkup_isr
-                0x08000948                i2c1_er_isr
-                0x08000948                nmi_handler
-                0x08000948                dma1_stream0_isr
-                0x08000948                tim8_cc_isr
-                0x08000948                dcmi_isr
-                0x08000948                dma2_stream2_isr
-                0x08000948                eth_wkup_isr
-                0x08000948                wwdg_isr
-                0x08000948                otg_hs_ep1_out_isr
-                0x08000948                spi3_isr
-                0x08000948                dma1_stream5_isr
-                0x08000948                otg_hs_ep1_in_isr
-                0x08000948                tim2_isr
-                0x08000948                exti0_isr
-                0x08000950                null_handler
- .text          0x0800095c       0xf0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
-                0x0800095c                ringbuffer_init
-                0x0800098c                ringbuffer_empty
-                0x080009b0                ringbuffer_read
-                0x080009fe                ringbuffer_write
+                0x08000236                __get_CONTROL
+                0x0800024e                __set__CONTROL_PRIVILEGE_LEVEL
+                0x08000284                __set__CONTROL_STACK_POINTER
+                0x080002ba                __set__CONTROL_FPU
+                0x080002f0                __get__CONTROL_PRIVILEGE_LEVEL
+                0x0800030e                __get__CONTROL_STACK_POINTER
+                0x0800032e                __get__CONTROL_FPU
+                0x0800034e                __get_MSP
+                0x08000366                __set_MSP
+                0x0800037e                __get_PSP
+                0x08000396                __set_PSP
+                0x080003ae                nmi_handler
+                0x080003c8                hard_fault_handler
+                0x080003e4                osEnableProcessorFaults
+                0x08000424                pend_sv_handler
+                0x0800044e                osSwitchSPToPSP
+                0x08000468                osGetPSPValue
+                0x08000490                osSavePSPValue
+                0x080004c0                osGetNextTask
+                0x08000534                osInitalieTCK
+                0x08000570                osCreateThread
+                0x08000678                osDeleteThread
+                0x080006b4                task1
+                0x080006e4                task2
+                0x08000714                idleTask
+                0x08000744                main
+ .text          0x080007c0       0x60 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+                0x080007c0                _reset
+ .text          0x08000820      0x120 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+                0x08000820                mem_manage_handler
+                0x080008c4                mpu_enable
+                0x080008e0                mpu_disable
+                0x08000918                mpu_init
+ .text          0x08000940       0xdc CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+                0x08000940                sv_call_handler
+                0x080009c8                chuj
+                0x080009ec                usart_syscall_write
+                0x08000a02                usart_syscall_read
+ .text          0x08000a1c       0xc8 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+                0x08000a1c                systick_init
+                0x08000a5c                sys_tick_handler
+                0x08000a90                systick_get_ticks
+                0x08000aa8                delay
+ .text          0x08000ae4      0x320 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+                0x08000ae4                uart_init
+                0x08000c60                usart1_isr
+                0x08000c9c                usart2_isr
+                0x08000cd8                usart3_isr
+                0x08000d14                usart_write
+                0x08000d4e                usart_write_byte
+                0x08000d7c                usart_read
+                0x08000dd0                usart_data_available
+ .text          0x08000e04       0xf8 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+                0x08000e04                gpio_set_mode
+                0x08000e6a                gpio_set_af
+ .text          0x08000efc      0x118 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+                0x08000efc                rcc_gpioa_enable
+                0x08000f18                rcc_gpioa_disable
+                0x08000f34                rcc_usart2_enable
+                0x08000f50                rcc_usart3_enable
+                0x08000f6c                rcc_usart2_disable
+                0x08000f88                rcc_usart3_disable
+                0x08000fa4                rcc_usart1_enable
+                0x08000fc0                rcc_syscfg_enable
+                0x08000fdc                rcc_syscfg_disable
+                0x08000ff8                rcc_usart1_disable
+ .text          0x08001014       0x14 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+                0x08001014                dma2_stream1_isr
+                0x08001014                tim8_brk_tim12_isr
+                0x08001014                dma1_stream7_isr
+                0x08001014                tim7_isr
+                0x08001014                dma1_stream2_isr
+                0x08001014                otg_hs_isr
+                0x08001014                blocking_handler
+                0x08001014                tim5_isr
+                0x08001014                rtc_wkup_isr
+                0x08001014                otg_fs_isr
+                0x08001014                spi1_isr
+                0x08001014                i2c3_er_isr
+                0x08001014                exti2_isr
+                0x08001014                tim1_brk__tim9_isr
+                0x08001014                tamp_stamp_isr
+                0x08001014                can1_rx1_isr
+                0x08001014                dma2_stream0_isr
+                0x08001014                i2c3_ev_isr
+                0x08001014                can2_rx0_isr
+                0x08001014                dma1_stream6_isr
+                0x08001014                can2_rx1_isr
+                0x08001014                can1_sce_isr
+                0x08001014                tim1_cc_isr
+                0x08001014                can1_tx_isr
+                0x08001014                sdio_isr
+                0x08001014                eth_isr
+                0x08001014                otg_fs_wkup_isr
+                0x08001014                dma2_stream5_isr
+                0x08001014                pvd_isr
+                0x08001014                can1_rx0_isr
+                0x08001014                rcc_isr
+                0x08001014                dma2_stream3_isr
+                0x08001014                flash_isr
+                0x08001014                uart4_isr
+                0x08001014                rtc_alarm_isr
+                0x08001014                exti15_10_isr
+                0x08001014                hash_rng_isr
+                0x08001014                tim1_trg_com_tim11_isr
+                0x08001014                exti1_isr
+                0x08001014                i2c1_ev_isr
+                0x08001014                usart6_isr
+                0x08001014                spi2_isr
+                0x08001014                cryp_isr
+                0x08001014                dma1_stream1_isr
+                0x08001014                dma2_stream4_isr
+                0x08001014                exti3_isr
+                0x08001014                tim3_isr
+                0x08001014                fpu_isr
+                0x08001014                dma1_stream4_isr
+                0x08001014                i2c2_er_isr
+                0x08001014                i2c2_ev_isr
+                0x08001014                uart5_isr
+                0x08001014                dma2_stream6_isr
+                0x08001014                adc_isr
+                0x08001014                dma2_stream7_isr
+                0x08001014                tim8_up_tim13_isr
+                0x08001014                fsmc_isr
+                0x08001014                exti4_isr
+                0x08001014                tim6_dac_isr
+                0x08001014                dma1_stream3_isr
+                0x08001014                tim8_trg_com_tim14_isr
+                0x08001014                can2_tx_isr
+                0x08001014                exti9_5_isr
+                0x08001014                tim1_up__tim10_isr
+                0x08001014                can2_sce_isr
+                0x08001014                tim4_isr
+                0x08001014                otg_hs_wkup_isr
+                0x08001014                i2c1_er_isr
+                0x08001014                dma1_stream0_isr
+                0x08001014                tim8_cc_isr
+                0x08001014                dcmi_isr
+                0x08001014                dma2_stream2_isr
+                0x08001014                eth_wkup_isr
+                0x08001014                wwdg_isr
+                0x08001014                otg_hs_ep1_out_isr
+                0x08001014                spi3_isr
+                0x08001014                dma1_stream5_isr
+                0x08001014                otg_hs_ep1_in_isr
+                0x08001014                tim2_isr
+                0x08001014                exti0_isr
+                0x0800101c                null_handler
+ .text          0x08001028       0xf0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+                0x08001028                ringbuffer_init
+                0x08001058                ringbuffer_empty
+                0x0800107c                ringbuffer_read
+                0x080010ca                ringbuffer_write
 
-.glue_7         0x08000a4c        0x0
- .glue_7        0x08000a4c        0x0 linker stubs
+.glue_7         0x08001118        0x0
+ .glue_7        0x08001118        0x0 linker stubs
 
-.glue_7t        0x08000a4c        0x0
- .glue_7t       0x08000a4c        0x0 linker stubs
+.glue_7t        0x08001118        0x0
+ .glue_7t       0x08001118        0x0 linker stubs
 
-.vfp11_veneer   0x08000a4c        0x0
- .vfp11_veneer  0x08000a4c        0x0 linker stubs
+.vfp11_veneer   0x08001118        0x0
+ .vfp11_veneer  0x08001118        0x0 linker stubs
 
-.v4_bx          0x08000a4c        0x0
- .v4_bx         0x08000a4c        0x0 linker stubs
+.v4_bx          0x08001118        0x0
+ .v4_bx         0x08001118        0x0 linker stubs
 
-.iplt           0x08000a4c        0x0
- .iplt          0x08000a4c        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+.iplt           0x08001118        0x0
+ .iplt          0x08001118        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 
-.rodata         0x08000a4c        0x2
+.rodata         0x08001118       0xd5
  *(.rodata*)
- .rodata        0x08000a4c        0x2 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .rodata        0x08001118       0x33 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ *fill*         0x0800114b        0x1 
+ .rodata        0x0800114c       0xa1 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
 
-.rel.dyn        0x08000a50        0x0
- .rel.iplt      0x08000a50        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+.rel.dyn        0x080011f0        0x0
+ .rel.iplt      0x080011f0        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 
-.data           0x20000000       0x78 load address 0x08000a4e
+.data           0x20000000       0x98 load address 0x080011ed
                 0x20000000                        _sdata = .
  *(.first_data)
  *(.data SORT_BY_NAME(.data.*))
- .data          0x20000000       0x78 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
-                0x20000068                uart1
-                0x20000070                uart2
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .data          0x20000078        0x0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
-                0x20000078                        _edata = .
-                0x08000a4e                        _sidata = LOADADDR (.data)
+ .data          0x20000000       0x98 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+                0x20000080                uart1
+                0x20000088                uart2
+                0x20000090                uart3
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .data          0x20000098        0x0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+                0x20000098                        _edata = .
+                0x080011ed                        _sidata = LOADADDR (.data)
 
-.igot.plt       0x20000078        0x0 load address 0x08000ac6
- .igot.plt      0x20000078        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+.igot.plt       0x20000098        0x0 load address 0x08001285
+ .igot.plt      0x20000098        0x0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 
-.bss            0x20000078      0x180 load address 0x08000ac6
-                0x20000078                        _sbss = .
+.bss            0x20000098      0x200 load address 0x08001285
+                0x20000098                        _sbss = .
  *(.bss SORT_BY_NAME(.bss.*) COMMON)
- .bss           0x20000078        0x8 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
- .bss           0x20000080        0x0 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .bss           0x20000080        0x8 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .bss           0x20000088      0x170 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .bss           0x200001f8        0x0 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .bss           0x200001f8        0x0 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .bss           0x200001f8        0x0 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .bss           0x200001f8        0x0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
-                0x200001f8                        _ebss = .
-                0x200001f8                        . = ALIGN (0x8)
-                0x200001f8                        _end = .
+ .bss           0x20000098       0x84 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+                0x200000a0                osTaskControlBlock
+                0x20000118                osCurrentTaks
+ .bss           0x2000011c        0x0 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .bss           0x2000011c        0x0 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .bss           0x2000011c        0x0 CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ *fill*         0x2000011c        0x4 
+ .bss           0x20000120        0x8 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .bss           0x20000128      0x170 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .bss           0x20000298        0x0 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .bss           0x20000298        0x0 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .bss           0x20000298        0x0 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .bss           0x20000298        0x0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+                0x20000298                        _ebss = .
+                0x20000298                        . = ALIGN (0x8)
+                0x20000298                        _end = .
 OUTPUT(firmware.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x14a4
- .debug_info    0x00000000      0x3dc CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
- .debug_info    0x000003dc      0x3ee CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .debug_info    0x000007ca      0x15f CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .debug_info    0x00000929      0x4af CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .debug_info    0x00000dd8      0x1ef CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .debug_info    0x00000fc7      0x2a8 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .debug_info    0x0000126f       0x4e CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .debug_info    0x000012bd      0x1e7 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+.debug_info     0x00000000     0x21b3
+ .debug_info    0x00000000      0x98e CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .debug_info    0x0000098e      0x3f4 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .debug_info    0x00000d82      0x360 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .debug_info    0x000010e2      0x322 CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .debug_info    0x00001404      0x234 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .debug_info    0x00001638      0x4af CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .debug_info    0x00001ae7      0x1ef CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .debug_info    0x00001cd6      0x2a8 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_info    0x00001f7e       0x4e CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_info    0x00001fcc      0x1e7 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 
-.debug_abbrev   0x00000000      0x870
- .debug_abbrev  0x00000000      0x1c4 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
- .debug_abbrev  0x000001c4      0x127 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .debug_abbrev  0x000002eb      0x125 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .debug_abbrev  0x00000410      0x197 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .debug_abbrev  0x000005a7      0x117 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .debug_abbrev  0x000006be       0xa2 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .debug_abbrev  0x00000760       0x3a CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .debug_abbrev  0x0000079a       0xd6 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+.debug_abbrev   0x00000000      0xbf7
+ .debug_abbrev  0x00000000      0x2a6 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .debug_abbrev  0x000002a6      0x127 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .debug_abbrev  0x000003cd      0x139 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .debug_abbrev  0x00000506      0x16d CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .debug_abbrev  0x00000673      0x124 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .debug_abbrev  0x00000797      0x197 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .debug_abbrev  0x0000092e      0x117 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .debug_abbrev  0x00000a45       0xa2 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_abbrev  0x00000ae7       0x3a CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_abbrev  0x00000b21       0xd6 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 
-.debug_aranges  0x00000000      0x100
+.debug_aranges  0x00000000      0x140
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
  .debug_aranges
                 0x00000020       0x20 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
  .debug_aranges
-                0x00000040       0x20 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+                0x00000040       0x20 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
  .debug_aranges
-                0x00000060       0x20 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+                0x00000060       0x20 CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
  .debug_aranges
-                0x00000080       0x20 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+                0x00000080       0x20 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
  .debug_aranges
-                0x000000a0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+                0x000000a0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
  .debug_aranges
-                0x000000c0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+                0x000000c0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
  .debug_aranges
-                0x000000e0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+                0x000000e0       0x20 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_aranges
+                0x00000100       0x20 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_aranges
+                0x00000120       0x20 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 
-.debug_line     0x00000000      0xb7f
- .debug_line    0x00000000      0x208 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
- .debug_line    0x00000208       0xfd CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .debug_line    0x00000305      0x14d CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .debug_line    0x00000452      0x28f CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .debug_line    0x000006e1      0x156 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .debug_line    0x00000837      0x159 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .debug_line    0x00000990       0x80 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .debug_line    0x00000a10      0x16f CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+.debug_rnglists
+                0x00000000       0x17
+ .debug_rnglists
+                0x00000000       0x17 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 
-.debug_str      0x00000000      0xcc7
- .debug_str     0x00000000      0xcc7 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
-                                0x2b3 (size before relaxing)
- .debug_str     0x00000cc7      0x62e CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .debug_str     0x00000cc7      0x1e7 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .debug_str     0x00000cc7      0x35d CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .debug_str     0x00000cc7      0x206 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .debug_str     0x00000cc7      0x30d CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .debug_str     0x00000cc7      0x107 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .debug_str     0x00000cc7      0x221 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+.debug_line     0x00000000     0x10ce
+ .debug_line    0x00000000      0x3c8 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .debug_line    0x000003c8       0xfd CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .debug_line    0x000004c5      0x1d6 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .debug_line    0x0000069b      0x16a CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .debug_line    0x00000805      0x19c CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .debug_line    0x000009a1      0x28f CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .debug_line    0x00000c30      0x156 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .debug_line    0x00000d86      0x159 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_line    0x00000edf       0x80 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_line    0x00000f5f      0x16f CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+
+.debug_str      0x00000000     0x115a
+ .debug_str     0x00000000     0x115a CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+                                0x610 (size before relaxing)
+ .debug_str     0x0000115a      0x641 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .debug_str     0x0000115a      0x290 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .debug_str     0x0000115a      0x28c CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .debug_str     0x0000115a      0x234 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .debug_str     0x0000115a      0x35d CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .debug_str     0x0000115a      0x206 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .debug_str     0x0000115a      0x30d CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_str     0x0000115a      0x107 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_str     0x0000115a      0x221 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 
 .comment        0x00000000       0x26
  .comment       0x00000000       0x26 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
                                  0x27 (size before relaxing)
  .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
  .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
  .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
  .comment       0x00000026       0x27 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
@@ -290,24 +352,30 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000002e       0x2e CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
  .ARM.attributes
-                0x0000005c       0x2e CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+                0x0000005c       0x2e CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
  .ARM.attributes
-                0x0000008a       0x2e CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+                0x0000008a       0x2e CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
  .ARM.attributes
-                0x000000b8       0x2e CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+                0x000000b8       0x2e CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
  .ARM.attributes
-                0x000000e6       0x2e CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+                0x000000e6       0x2e CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
  .ARM.attributes
-                0x00000114       0x2e CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+                0x00000114       0x2e CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
  .ARM.attributes
-                0x00000142       0x2e CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+                0x00000142       0x2e CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .ARM.attributes
+                0x00000170       0x2e CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .ARM.attributes
+                0x0000019e       0x2e CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 
-.debug_frame    0x00000000      0x548
- .debug_frame   0x00000000       0xa0 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
- .debug_frame   0x000000a0       0x30 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
- .debug_frame   0x000000d0       0x9c CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
- .debug_frame   0x0000016c      0x134 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
- .debug_frame   0x000002a0       0x60 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
- .debug_frame   0x00000300      0x150 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
- .debug_frame   0x00000450       0x48 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
- .debug_frame   0x00000498       0xb0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
+.debug_frame    0x00000000      0xa48
+ .debug_frame   0x00000000      0x418 CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
+ .debug_frame   0x00000418       0x30 CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
+ .debug_frame   0x00000448       0xcc CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
+ .debug_frame   0x00000514       0xbc CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+ .debug_frame   0x000005d0       0x9c CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
+ .debug_frame   0x0000066c      0x134 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
+ .debug_frame   0x000007a0       0x60 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
+ .debug_frame   0x00000800      0x150 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o
+ .debug_frame   0x00000950       0x48 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
+ .debug_frame   0x00000998       0xb0 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o

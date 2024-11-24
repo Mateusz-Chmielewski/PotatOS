@@ -33,6 +33,7 @@ __attribute__((section(".vectors"))) vector_table_t vector_table = {
     .reset = _reset,
     .nmi = nmi_handler,
     .hard_fault = hard_fault_handler,
+    .mem_manage = mem_manage_handler,
     .sv_call = sv_call_handler,
     .pend_sv = pend_sv_handler,
     .systick = sys_tick_handler,

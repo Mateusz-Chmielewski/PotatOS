@@ -18,13 +18,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 61,
+				"line" : 84,
 				"parent" : 0
 			}
 		]
 	},
-	"id" : "rung::@6890427a1f51a3e7e1df",
-	"name" : "rung",
+	"dependencies" : 
+	[
+		{
+			"id" : "firmware.elf::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "gdb::@6890427a1f51a3e7e1df",
+	"name" : "gdb",
 	"paths" : 
 	{
 		"build" : ".",
@@ -52,13 +58,13 @@
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/rung",
+			"path" : "build/CMakeFiles/gdb",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/rung.rule",
+			"path" : "build/CMakeFiles/gdb.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

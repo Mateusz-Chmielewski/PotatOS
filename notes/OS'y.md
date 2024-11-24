@@ -337,3 +337,8 @@ http://fiona.dmcs.p.lodz.pl/arm/slajdy/slajdy3.pdf
 
 
 
+
+
+# wyjątki
+![[Pasted image 20241123022904.png]]![[Pasted image 20241123022925.png]]
+

@@ -18,6 +18,7 @@ void hard_fault_handler(void) __attribute__((weak, alias("blocking_handler")));
 void sv_call_handler(void) __attribute__((weak, alias("blocking_handler")));
 void pend_sv_handler(void) __attribute__((weak, alias("blocking_handler")));
 void sys_tick_handler(void) __attribute__((weak, alias("blocking_handler")));
+void mem_manage_handler(void) __attribute__((weak, alias("blocking_handler")));
 
 // peripheral interrupts
 void wwdg_isr(void) __attribute__((weak, alias("blocking_handler")));
