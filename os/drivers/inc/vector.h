@@ -6,8 +6,7 @@ typedef void (*fn_ptr)(void);
 // vector table contains 13+82 pointers to functions (interrupt handlers)
 // 13 system interrupts
 // 82 periphal interrupts
-typedef struct
-{
+typedef struct {
   unsigned int *initial_sp_value;
   fn_ptr reset;
   fn_ptr nmi;
@@ -36,10 +35,13 @@ void null_handler(void);
 void _reset(void);
 void nmi_handler(void);
 void hard_fault_handler(void);
+void mem_manage_handler(void);
+void bus_fault_handler(void);
+void usage_fault_handler(void);
 void sv_call_handler(void);
+void debug_monitor_handler(void);
 void pend_sv_handler(void);
 void sys_tick_handler(void);
-void mem_manage_handler(void);
 
 // peripheral interrupts
 void wwdg_isr(void);
@@ -208,85 +210,54 @@ void fpu_isr(void);
 #define NVIC_FPU_IRQ 81
 
 // used to initalize irq handlers
-#define IRQ_HANDLERS                                \
-  [NVIC_WWDG_IRQ] = wwdg_isr,                       \
-  [NVIC_PVD_IRQ] = pvd_isr,                         \
-  [NVIC_TAMPER_IRQ] = tamp_stamp_isr,               \
-  [NVIC_RTC_IRQ] = rtc_wkup_isr,                    \
-  [NVIC_FLASH_IRQ] = flash_isr,                     \
-  [NVIC_RCC_IRQ] = rcc_isr,                         \
-  [NVIC_EXTI0_IRQ] = exti0_isr,                     \
-  [NVIC_EXTI1_IRQ] = exti1_isr,                     \
-  [NVIC_EXTI2_IRQ] = exti2_isr,                     \
-  [NVIC_EXTI3_IRQ] = exti3_isr,                     \
-  [NVIC_EXTI4_IRQ] = exti4_isr,                     \
-  [NVIC_DMA1_CHANNEL1_IRQ] = dma1_stream0_isr,      \
-  [NVIC_DMA1_CHANNEL2_IRQ] = dma1_stream1_isr,      \
-  [NVIC_DMA1_CHANNEL3_IRQ] = dma1_stream2_isr,      \
-  [NVIC_DMA1_CHANNEL4_IRQ] = dma1_stream3_isr,      \
-  [NVIC_DMA1_CHANNEL5_IRQ] = dma1_stream4_isr,      \
-  [NVIC_DMA1_CHANNEL6_IRQ] = dma1_stream5_isr,      \
-  [NVIC_DMA1_CHANNEL7_IRQ] = dma1_stream6_isr,      \
-  [NVIC_ADC1_2_IRQ] = adc_isr,                      \
-  [NVIC_USB_HP_CAN_TX_IRQ] = can1_tx_isr,           \
-  [NVIC_USB_LP_CAN_RX0_IRQ] = can1_rx0_isr,         \
-  [NVIC_CAN_RX1_IRQ] = can1_rx1_isr,                \
-  [NVIC_CAN_SCE_IRQ] = can1_sce_isr,                \
-  [NVIC_EXTI9_5_IRQ] = exti9_5_isr,                 \
-  [NVIC_TIM1_BRK_IRQ] = tim1_brk__tim9_isr,         \
-  [NVIC_TIM1_UP_IRQ] = tim1_up__tim10_isr,          \
-  [NVIC_TIM1_TRG_COM_IRQ] = tim1_trg_com_tim11_isr, \
-  [NVIC_TIM1_CC_IRQ] = tim1_cc_isr,                 \
-  [NVIC_TIM2_IRQ] = tim2_isr,                       \
-  [NVIC_TIM3_IRQ] = tim3_isr,                       \
-  [NVIC_TIM4_IRQ] = tim4_isr,                       \
-  [NVIC_I2C1_EV_IRQ] = i2c1_ev_isr,                 \
-  [NVIC_I2C1_ER_IRQ] = i2c1_er_isr,                 \
-  [NVIC_I2C2_EV_IRQ] = i2c2_ev_isr,                 \
-  [NVIC_I2C2_ER_IRQ] = i2c2_er_isr,                 \
-  [NVIC_SPI1_IRQ] = spi1_isr,                       \
-  [NVIC_SPI2_IRQ] = spi2_isr,                       \
-  [NVIC_USART1_IRQ] = usart1_isr,                   \
-  [NVIC_USART2_IRQ] = usart2_isr,                   \
-  [NVIC_USART3_IRQ] = usart3_isr,                   \
-  [NVIC_EXTI15_10_IRQ] = exti15_10_isr,             \
-  [NVIC_RTC_ALARM_IRQ] = rtc_alarm_isr,             \
-  [NVIC_USB_WKUP_IRQ] = otg_fs_wkup_isr,            \
-  [NVIC_TIM8_BRK_IRQ] = tim8_brk_tim12_isr,         \
-  [NVIC_TIM8_UP_IRQ] = tim8_up_tim13_isr,           \
-  [NVIC_TIM8_TRG_COM_IRQ] = tim8_trg_com_tim14_isr, \
-  [NVIC_TIM8_CC_IRQ] = tim8_cc_isr,                 \
-  [NVIC_ADC3_IRQ] = adc_isr,                        \
-  [NVIC_FSMC_IRQ] = fsmc_isr,                       \
-  [NVIC_SDIO_IRQ] = sdio_isr,                       \
-  [NVIC_TIM5_IRQ] = tim5_isr,                       \
-  [NVIC_SPI3_IRQ] = spi3_isr,                       \
-  [NVIC_UART4_IRQ] = uart4_isr,                     \
-  [NVIC_UART5_IRQ] = uart5_isr,                     \
-  [NVIC_TIM6_IRQ] = tim6_dac_isr,                   \
-  [NVIC_TIM7_IRQ] = tim7_isr,                       \
-  [NVIC_DMA2_CHANNEL1_IRQ] = dma2_stream0_isr,      \
-  [NVIC_DMA2_CHANNEL2_IRQ] = dma2_stream1_isr,      \
-  [NVIC_DMA2_CHANNEL3_IRQ] = dma2_stream2_isr,      \
-  [NVIC_DMA2_CHANNEL4_5_IRQ] = dma2_stream3_isr,    \
-  [NVIC_DMA2_CHANNEL5_IRQ] = dma2_stream4_isr,      \
-  [NVIC_ETH_IRQ] = eth_isr,                         \
-  [NVIC_ETH_WKUP_IRQ] = eth_wkup_isr,               \
-  [NVIC_CAN2_TX_IRQ] = can2_tx_isr,                 \
-  [NVIC_CAN2_RX0_IRQ] = can2_rx0_isr,               \
-  [NVIC_CAN2_RX1_IRQ] = can2_rx1_isr,               \
-  [NVIC_CAN2_SCE_IRQ] = can2_sce_isr,               \
-  [NVIC_OTG_FS_IRQ] = otg_fs_isr,                   \
-  [NVIC_DMA2_CHANNEL6_IRQ] = dma2_stream5_isr,      \
-  [NVIC_DMA2_CHANNEL7_IRQ] = dma2_stream6_isr,      \
-  [NVIC_USART6_IRQ] = usart6_isr,                   \
-  [NVIC_I2C3_EV_IRQ] = i2c3_ev_isr,                 \
-  [NVIC_I2C3_ER_IRQ] = i2c3_er_isr,                 \
-  [NVIC_OTG_HS_EP1_OUT_IRQ] = otg_hs_ep1_out_isr,   \
-  [NVIC_OTG_HS_EP1_IN_IRQ] = otg_hs_ep1_in_isr,     \
-  [NVIC_OTG_HS_WKUP_IRQ] = otg_hs_wkup_isr,         \
-  [NVIC_OTG_HS_IRQ] = otg_hs_isr,                   \
-  [NVIC_DCMI_IRQ] = dcmi_isr,                       \
-  [NVIC_CRYP_IRQ] = cryp_isr,                       \
-  [NVIC_HASH_RNG_IRQ] = hash_rng_isr,               \
-  [NVIC_FPU_IRQ] = fpu_isr
+#define IRQ_HANDLERS                                                           \
+  [NVIC_WWDG_IRQ] = wwdg_isr, [NVIC_PVD_IRQ] = pvd_isr,                        \
+  [NVIC_TAMPER_IRQ] = tamp_stamp_isr, [NVIC_RTC_IRQ] = rtc_wkup_isr,           \
+  [NVIC_FLASH_IRQ] = flash_isr, [NVIC_RCC_IRQ] = rcc_isr,                      \
+  [NVIC_EXTI0_IRQ] = exti0_isr, [NVIC_EXTI1_IRQ] = exti1_isr,                  \
+  [NVIC_EXTI2_IRQ] = exti2_isr, [NVIC_EXTI3_IRQ] = exti3_isr,                  \
+  [NVIC_EXTI4_IRQ] = exti4_isr, [NVIC_DMA1_CHANNEL1_IRQ] = dma1_stream0_isr,   \
+  [NVIC_DMA1_CHANNEL2_IRQ] = dma1_stream1_isr,                                 \
+  [NVIC_DMA1_CHANNEL3_IRQ] = dma1_stream2_isr,                                 \
+  [NVIC_DMA1_CHANNEL4_IRQ] = dma1_stream3_isr,                                 \
+  [NVIC_DMA1_CHANNEL5_IRQ] = dma1_stream4_isr,                                 \
+  [NVIC_DMA1_CHANNEL6_IRQ] = dma1_stream5_isr,                                 \
+  [NVIC_DMA1_CHANNEL7_IRQ] = dma1_stream6_isr, [NVIC_ADC1_2_IRQ] = adc_isr,    \
+  [NVIC_USB_HP_CAN_TX_IRQ] = can1_tx_isr,                                      \
+  [NVIC_USB_LP_CAN_RX0_IRQ] = can1_rx0_isr, [NVIC_CAN_RX1_IRQ] = can1_rx1_isr, \
+  [NVIC_CAN_SCE_IRQ] = can1_sce_isr, [NVIC_EXTI9_5_IRQ] = exti9_5_isr,         \
+  [NVIC_TIM1_BRK_IRQ] = tim1_brk__tim9_isr,                                    \
+  [NVIC_TIM1_UP_IRQ] = tim1_up__tim10_isr,                                     \
+  [NVIC_TIM1_TRG_COM_IRQ] = tim1_trg_com_tim11_isr,                            \
+  [NVIC_TIM1_CC_IRQ] = tim1_cc_isr, [NVIC_TIM2_IRQ] = tim2_isr,                \
+  [NVIC_TIM3_IRQ] = tim3_isr, [NVIC_TIM4_IRQ] = tim4_isr,                      \
+  [NVIC_I2C1_EV_IRQ] = i2c1_ev_isr, [NVIC_I2C1_ER_IRQ] = i2c1_er_isr,          \
+  [NVIC_I2C2_EV_IRQ] = i2c2_ev_isr, [NVIC_I2C2_ER_IRQ] = i2c2_er_isr,          \
+  [NVIC_SPI1_IRQ] = spi1_isr, [NVIC_SPI2_IRQ] = spi2_isr,                      \
+  [NVIC_USART1_IRQ] = usart1_isr, [NVIC_USART2_IRQ] = usart2_isr,              \
+  [NVIC_USART3_IRQ] = usart3_isr, [NVIC_EXTI15_10_IRQ] = exti15_10_isr,        \
+  [NVIC_RTC_ALARM_IRQ] = rtc_alarm_isr, [NVIC_USB_WKUP_IRQ] = otg_fs_wkup_isr, \
+  [NVIC_TIM8_BRK_IRQ] = tim8_brk_tim12_isr,                                    \
+  [NVIC_TIM8_UP_IRQ] = tim8_up_tim13_isr,                                      \
+  [NVIC_TIM8_TRG_COM_IRQ] = tim8_trg_com_tim14_isr,                            \
+  [NVIC_TIM8_CC_IRQ] = tim8_cc_isr, [NVIC_ADC3_IRQ] = adc_isr,                 \
+  [NVIC_FSMC_IRQ] = fsmc_isr, [NVIC_SDIO_IRQ] = sdio_isr,                      \
+  [NVIC_TIM5_IRQ] = tim5_isr, [NVIC_SPI3_IRQ] = spi3_isr,                      \
+  [NVIC_UART4_IRQ] = uart4_isr, [NVIC_UART5_IRQ] = uart5_isr,                  \
+  [NVIC_TIM6_IRQ] = tim6_dac_isr, [NVIC_TIM7_IRQ] = tim7_isr,                  \
+  [NVIC_DMA2_CHANNEL1_IRQ] = dma2_stream0_isr,                                 \
+  [NVIC_DMA2_CHANNEL2_IRQ] = dma2_stream1_isr,                                 \
+  [NVIC_DMA2_CHANNEL3_IRQ] = dma2_stream2_isr,                                 \
+  [NVIC_DMA2_CHANNEL4_5_IRQ] = dma2_stream3_isr,                               \
+  [NVIC_DMA2_CHANNEL5_IRQ] = dma2_stream4_isr, [NVIC_ETH_IRQ] = eth_isr,       \
+  [NVIC_ETH_WKUP_IRQ] = eth_wkup_isr, [NVIC_CAN2_TX_IRQ] = can2_tx_isr,        \
+  [NVIC_CAN2_RX0_IRQ] = can2_rx0_isr, [NVIC_CAN2_RX1_IRQ] = can2_rx1_isr,      \
+  [NVIC_CAN2_SCE_IRQ] = can2_sce_isr, [NVIC_OTG_FS_IRQ] = otg_fs_isr,          \
+  [NVIC_DMA2_CHANNEL6_IRQ] = dma2_stream5_isr,                                 \
+  [NVIC_DMA2_CHANNEL7_IRQ] = dma2_stream6_isr, [NVIC_USART6_IRQ] = usart6_isr, \
+  [NVIC_I2C3_EV_IRQ] = i2c3_ev_isr, [NVIC_I2C3_ER_IRQ] = i2c3_er_isr,          \
+  [NVIC_OTG_HS_EP1_OUT_IRQ] = otg_hs_ep1_out_isr,                              \
+  [NVIC_OTG_HS_EP1_IN_IRQ] = otg_hs_ep1_in_isr,                                \
+  [NVIC_OTG_HS_WKUP_IRQ] = otg_hs_wkup_isr, [NVIC_OTG_HS_IRQ] = otg_hs_isr,    \
+  [NVIC_DCMI_IRQ] = dcmi_isr, [NVIC_CRYP_IRQ] = cryp_isr,                      \
+  [NVIC_HASH_RNG_IRQ] = hash_rng_isr, [NVIC_FPU_IRQ] = fpu_isr

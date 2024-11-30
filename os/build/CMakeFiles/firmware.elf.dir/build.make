@@ -125,10 +125,24 @@ CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.s"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/system_calls.c -o CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.s
 
+CMakeFiles/firmware.elf.dir/kernel/src/task.c.o: CMakeFiles/firmware.elf.dir/flags.make
+CMakeFiles/firmware.elf.dir/kernel/src/task.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c
+CMakeFiles/firmware.elf.dir/kernel/src/task.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/firmware.elf.dir/kernel/src/task.c.o"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/kernel/src/task.c.o -MF CMakeFiles/firmware.elf.dir/kernel/src/task.c.o.d -o CMakeFiles/firmware.elf.dir/kernel/src/task.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c
+
+CMakeFiles/firmware.elf.dir/kernel/src/task.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/firmware.elf.dir/kernel/src/task.c.i"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c > CMakeFiles/firmware.elf.dir/kernel/src/task.c.i
+
+CMakeFiles/firmware.elf.dir/kernel/src/task.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/firmware.elf.dir/kernel/src/task.c.s"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c -o CMakeFiles/firmware.elf.dir/kernel/src/task.c.s
+
 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c
 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/systick.c.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/systick.c.s: cmake_force
 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c
 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/uart.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/uart.c.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/uart.c.s: cmake_force
 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/gpio.c
 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/gpio.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.s: cmake_force
 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/rcc.c
 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/rcc.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/rcc.c.s: cmake_force
 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/vector.c
 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/vector.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/vector.c.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/firmware.elf.dir/drivers/src/vector.c.s: cmake_force
 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o: CMakeFiles/firmware.elf.dir/flags.make
 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o: /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/ringbuffer.c
 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o: CMakeFiles/firmware.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o -MF CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o.d -o CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/ringbuffer.c
 
 CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.i: cmake_force
@@ -215,6 +229,7 @@ firmware_elf_OBJECTS = \
 "CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o" \
 "CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o" \
 "CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o" \
+"CMakeFiles/firmware.elf.dir/kernel/src/task.c.o" \
 "CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o" \
 "CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o" \
 "CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o" \
@@ -229,6 +244,7 @@ firmware.elf: CMakeFiles/firmware.elf.dir/kernel/src/main.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o
+firmware.elf: CMakeFiles/firmware.elf.dir/kernel/src/task.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/drivers/src/uart.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/drivers/src/gpio.c.o
@@ -237,7 +253,7 @@ firmware.elf: CMakeFiles/firmware.elf.dir/drivers/src/vector.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/drivers/src/ringbuffer.c.o
 firmware.elf: CMakeFiles/firmware.elf.dir/build.make
 firmware.elf: CMakeFiles/firmware.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable firmware.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable firmware.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/firmware.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Creating firmware.bin"
 	arm-none-eabi-objcopy -O binary firmware.elf firmware.bin

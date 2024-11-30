@@ -25,6 +25,12 @@
 },
 {
   "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
+  "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/kernel/src/task.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c",
+  "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/src/task.c",
+  "output": "CMakeFiles/firmware.elf.dir/kernel/src/task.c.o"
+},
+{
+  "directory": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build",
   "command": "arm-none-eabi-gcc  -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc -I/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc -Wall -Wextra -mcpu=cortex-m4 -DSTM32F405xx -g -nostdlib -g -o CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o -c /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c",
   "file": "/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/src/systick.c",
   "output": "CMakeFiles/firmware.elf.dir/drivers/src/systick.c.o"

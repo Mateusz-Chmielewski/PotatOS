@@ -3,8 +3,7 @@
 // naked - do not generate prologue/epilogue sequences for function
 // noreturn - function does not return
 //__attribute__((naked, noreturn))
-void _reset(void)
-{
+void _reset(void) {
   // extern variables from linker script
   extern long _sbss, _ebss, _sdata, _edata, _sidata;
 
@@ -19,8 +18,8 @@ void _reset(void)
   extern int main(void);
   (void)main();
 
-  while (1)
-  {
+  // never reach here
+  while (1) {
   };
 }
 
@@ -34,8 +33,10 @@ __attribute__((section(".vectors"))) vector_table_t vector_table = {
     .nmi = nmi_handler,
     .hard_fault = hard_fault_handler,
     .mem_manage = mem_manage_handler,
+    .bus_fault = bus_fault_handler,
+    .usage_fault = usage_fault_handler,
     .sv_call = sv_call_handler,
+    .debug_monitor = debug_monitor_handler,
     .pend_sv = pend_sv_handler,
     .systick = sys_tick_handler,
-    .irq = {
-        IRQ_HANDLERS}};
+    .irq = {IRQ_HANDLERS}};

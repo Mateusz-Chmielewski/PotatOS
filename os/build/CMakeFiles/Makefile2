@@ -85,12 +85,12 @@ clean: CMakeFiles/gdb.dir/clean
 CMakeFiles/firmware.elf.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target firmware.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target firmware.elf"
 .PHONY : CMakeFiles/firmware.elf.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/firmware.elf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/firmware.elf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 0
 .PHONY : CMakeFiles/firmware.elf.dir/rule
@@ -111,7 +111,7 @@ CMakeFiles/firmware.elf.dir/clean:
 CMakeFiles/rung.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rung.dir/build.make CMakeFiles/rung.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rung.dir/build.make CMakeFiles/rung.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=15 "Built target rung"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=16 "Built target rung"
 .PHONY : CMakeFiles/rung.dir/all
 
 # Build rule for subdir invocation for target.
@@ -137,7 +137,7 @@ CMakeFiles/rung.dir/clean:
 CMakeFiles/run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=13 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=14 "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -163,12 +163,12 @@ CMakeFiles/run.dir/clean:
 CMakeFiles/rundbg.dir/all: CMakeFiles/firmware.elf.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rundbg.dir/build.make CMakeFiles/rundbg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rundbg.dir/build.make CMakeFiles/rundbg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=14 "Built target rundbg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=15 "Built target rundbg"
 .PHONY : CMakeFiles/rundbg.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rundbg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rundbg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 0
 .PHONY : CMakeFiles/rundbg.dir/rule
@@ -189,12 +189,12 @@ CMakeFiles/rundbg.dir/clean:
 CMakeFiles/gdb.dir/all: CMakeFiles/firmware.elf.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gdb.dir/build.make CMakeFiles/gdb.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gdb.dir/build.make CMakeFiles/gdb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=12 "Built target gdb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles --progress-num=13 "Built target gdb"
 .PHONY : CMakeFiles/gdb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gdb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gdb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/build/CMakeFiles 0
 .PHONY : CMakeFiles/gdb.dir/rule

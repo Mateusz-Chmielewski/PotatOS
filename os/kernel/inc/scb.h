@@ -1,13 +1,14 @@
 #ifndef SCB_DRIVER_H
 #define SCB_DRIVER_H
 
+#include "common.h"
 #include <stdint.h>
 
 #define SCB_BASE_ADDRESS 0xE000ED00
 
-struct scb_t
-{
-  volatile uint32_t CPUID, ICSR, VTOR, AIRCR, SCR, CCR, SHPR1, SHPR2, SHPR3, SHCSR, CFSR, HFSR, MMAR, BFAR, AFSR;
+struct scb_t {
+  volatile uint32_t CPUID, ICSR, VTOR, AIRCR, SCR, CCR, SHPR1, SHPR2, SHPR3,
+      SHCSR, CFSR, HFSR, MMAR, BFAR, AFSR;
 };
 
 #define SCB ((struct scb_t *)SCB_BASE_ADDRESS)

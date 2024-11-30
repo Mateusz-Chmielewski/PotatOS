@@ -421,6 +421,30 @@ kernel/src/system_calls.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.s
 .PHONY : kernel/src/system_calls.c.s
 
+kernel/src/task.o: kernel/src/task.c.o
+.PHONY : kernel/src/task.o
+
+# target to build an object file
+kernel/src/task.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/task.c.o
+.PHONY : kernel/src/task.c.o
+
+kernel/src/task.i: kernel/src/task.c.i
+.PHONY : kernel/src/task.i
+
+# target to preprocess a source file
+kernel/src/task.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/task.c.i
+.PHONY : kernel/src/task.c.i
+
+kernel/src/task.s: kernel/src/task.c.s
+.PHONY : kernel/src/task.s
+
+# target to generate assembly for a file
+kernel/src/task.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/firmware.elf.dir/build.make CMakeFiles/firmware.elf.dir/kernel/src/task.c.s
+.PHONY : kernel/src/task.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -464,6 +488,9 @@ help:
 	@echo "... kernel/src/system_calls.o"
 	@echo "... kernel/src/system_calls.i"
 	@echo "... kernel/src/system_calls.s"
+	@echo "... kernel/src/task.o"
+	@echo "... kernel/src/task.i"
+	@echo "... kernel/src/task.s"
 .PHONY : help
 
 

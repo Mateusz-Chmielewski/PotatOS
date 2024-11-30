@@ -31,6 +31,7 @@ set(SOURCES
     kernel/src/startup.c
     kernel/src/mpu.c
     kernel/src/system_calls.c
+    kernel/src/task.c
     drivers/src/systick.c
     drivers/src/uart.c
     drivers/src/gpio.c

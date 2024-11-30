@@ -55,6 +55,8 @@ https://developer.arm.com/documentation/107706/0100/System-exceptions/Pended-SVC
 
 ![[Pasted image 20241123031639.png]]
 
+
+przykład 
 https://github.com/ARM-software/m-profile-user-guide-examples/tree/main/Memory_model/rtos_context_switch
 
 
@@ -69,7 +71,12 @@ https://www.eng.auburn.edu/~nelson/courses/elec5260_6260/slides/ARM%20STM32F476%
 
 ![[Pasted image 20241124133703.png]]
 
-### **Context Switching**
+![[Pasted image 20241130193757.png]]
+
+![[Pasted image 20241130193808.png]]
+
+# Context switching
+
 https://interrupt.memfault.com/blog/arm-cortex-m-exceptions-and-nvic#built-in-exceptions
 https://interrupt.memfault.com/blog/cortex-m-rtos-context-switching
 the **context switch** occurs when the current task is paused and the processor switches to a different task
@@ -84,8 +91,9 @@ A context switch involves saving the processor's state (registers, program count
 
 ![[Pasted image 20241124133857.png]]![[Pasted image 20241124133937.png]]
 
+pendSV musi miec najmniejszy priorytet aby nie było problemów z innymi przerwaniami. po systicku (z najwiekszym priorytetem) wykonywane są poprzednie przerwania, a na końcu wykonywane jest przerwanie pendsv z context switchem
 
 ![[Pasted image 20241124170628.png]]
 
 
-systick zapisuje r0-r3 r12 lr pc xpsr, pendsv musi zapisac r4-r11. aby zapisać cały konetks tasku. następnie pobi
+systick zapisuje r0-r3 r12 lr pc xpsr, pendsv musi zapisac r4-r11. aby zapisać cały konetks tasku. 

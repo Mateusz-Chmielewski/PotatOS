@@ -1,24 +1,26 @@
 #include "vector.h"
 
-void blocking_handler(void)
-{
-  while (1)
-  {
+void blocking_handler(void) {
+  while (1) {
   }
 }
 
-void null_handler(void)
-{
-}
+void null_handler(void) {}
 
 // system interrupts
-void _reset(void) __attribute__((naked, noreturn, weak, alias("blocking_handler")));
+void _reset(void)
+    __attribute__((naked, noreturn, weak, alias("blocking_handler")));
 void nmi_handler(void) __attribute__((weak, alias("blocking_handler")));
 void hard_fault_handler(void) __attribute__((weak, alias("blocking_handler")));
+void mem_manage_handler(void) __attribute__((weak, alias("blocking_handler")));
+void bus_fault_handler(void) __attribute__((weak, alias("blocking_handler")));
+void usage_fault_handler(void) __attribute__((weak, alias("blocking_handler")));
+
 void sv_call_handler(void) __attribute__((weak, alias("blocking_handler")));
+void debug_monitor_handler(void)
+    __attribute__((weak, alias("blocking_handler")));
 void pend_sv_handler(void) __attribute__((weak, alias("blocking_handler")));
 void sys_tick_handler(void) __attribute__((weak, alias("blocking_handler")));
-void mem_manage_handler(void) __attribute__((weak, alias("blocking_handler")));
 
 // peripheral interrupts
 void wwdg_isr(void) __attribute__((weak, alias("blocking_handler")));
@@ -47,7 +49,8 @@ void can1_sce_isr(void) __attribute__((weak, alias("blocking_handler")));
 void exti9_5_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim1_brk__tim9_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim1_up__tim10_isr(void) __attribute__((weak, alias("blocking_handler")));
-void tim1_trg_com_tim11_isr(void) __attribute__((weak, alias("blocking_handler")));
+void tim1_trg_com_tim11_isr(void)
+    __attribute__((weak, alias("blocking_handler")));
 void tim1_cc_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim2_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim3_isr(void) __attribute__((weak, alias("blocking_handler")));
@@ -66,7 +69,8 @@ void rtc_alarm_isr(void) __attribute__((weak, alias("blocking_handler")));
 void otg_fs_wkup_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim8_brk_tim12_isr(void) __attribute__((weak, alias("blocking_handler")));
 void tim8_up_tim13_isr(void) __attribute__((weak, alias("blocking_handler")));
-void tim8_trg_com_tim14_isr(void) __attribute__((weak, alias("blocking_handler")));
+void tim8_trg_com_tim14_isr(void)
+    __attribute__((weak, alias("blocking_handler")));
 void tim8_cc_isr(void) __attribute__((weak, alias("blocking_handler")));
 void dma1_stream7_isr(void) __attribute__((weak, alias("blocking_handler")));
 void fsmc_isr(void) __attribute__((weak, alias("blocking_handler")));

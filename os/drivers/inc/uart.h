@@ -1,19 +1,17 @@
 #ifndef UART_H
 #define UART_H
 
-#include <stdint.h>
-#include "memory.h"
-#include <stdbool.h>
 #include "common.h"
+#include "memorymap.h"
 #include "ringbuffer.h"
+#include <stdbool.h>
+#include <stdint.h>
 
-struct uart
-{
+struct uart {
   volatile uint32_t SR, DR, BRR, CR1, CR2, CR3, GTPR;
 };
 
-typedef struct uart_handle_t
-{
+typedef struct uart_handle_t {
   struct uart *uart;
   ringbuffer_t *rb;
 } uart_handle_t;
@@ -36,9 +34,11 @@ typedef struct uart_handle_t
 void uart_init(struct uart_handle_t *uart_handle, unsigned long baud);
 void usart1_isr(void);
 
-void usart_write(struct uart_handle_t *uart_handle, uint8_t *data, const uint32_t length);
+void usart_write(struct uart_handle_t *uart_handle, uint8_t *data,
+                 const uint32_t length);
 void usart_write_byte(struct uart_handle_t *uart_handle, uint8_t data);
-uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data, const uint32_t length);
+uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data,
+                    const uint32_t length);
 bool usart_data_available(struct uart_handle_t *uart_handle);
 
 #endif // UART_H

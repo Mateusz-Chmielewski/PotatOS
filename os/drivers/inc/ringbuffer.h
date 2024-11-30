@@ -1,11 +1,10 @@
 #ifndef RINGBUFFER_H
 #define RINGBUFFER_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
-typedef struct ringbuffer_t
-{
+typedef struct ringbuffer_t {
   uint8_t *buffer;
   uint32_t mask;
   uint32_t read_pos;

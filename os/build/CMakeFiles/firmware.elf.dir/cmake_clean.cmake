@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/firmware.elf.dir/kernel/src/startup.c.o.d"
   "CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o"
   "CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o.d"
+  "CMakeFiles/firmware.elf.dir/kernel/src/task.c.o"
+  "CMakeFiles/firmware.elf.dir/kernel/src/task.c.o.d"
   "firmware.bin"
   "firmware.elf"
   "firmware.elf.pdb"

@@ -1,19 +1,17 @@
 #ifndef GPIO_H
 #define GPIO_H
 
-#include <stdint.h>
 #include "memorymap.h"
 #include <stdbool.h>
+#include <stdint.h>
 
-struct gpio
-{
+struct gpio {
   volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR, IDR, ODR, BSRR, LCKR, AFR[2];
 };
 
 #define GPIO(bank) ((struct gpio *)(GPIO_BASE + 0x400 * (bank)))
 
-typedef enum
-{
+typedef enum {
   GPIO_MODE_IN = 0,
   GPIO_MODE_OUT = 1,
   GPIO_MODE_AF = 2,
