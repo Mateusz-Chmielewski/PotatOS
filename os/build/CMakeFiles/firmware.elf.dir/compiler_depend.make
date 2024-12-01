@@ -48,6 +48,7 @@ CMakeFiles/firmware.elf.dir/kernel/src/main.c.o: /mnt/c/Users/igors/Desktop/stud
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/systick.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/mpu.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/os.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/osLib.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/scb.h \
@@ -62,6 +63,7 @@ CMakeFiles/firmware.elf.dir/kernel/src/mpu.c.o: /mnt/c/Users/igors/Desktop/studi
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/mpu.h \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/osDefs.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/scb.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h
@@ -75,6 +77,7 @@ CMakeFiles/firmware.elf.dir/kernel/src/system_calls.c.o: /mnt/c/Users/igors/Desk
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/ringbuffer.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/drivers/inc/uart.h \
   /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/system_calls.h \
+  /mnt/c/Users/igors/Desktop/studia/SEM5/OS/PotatOS/os/kernel/inc/task.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h
 

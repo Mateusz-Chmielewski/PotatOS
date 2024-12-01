@@ -9,7 +9,9 @@
 #define INNTERRUPT_ENABLE() __asm volatile("CPSIE I")
 
 #define TASK_STACK_SIZE 1024 // Size of the task stack
+
 #define MAX_TASKS 10
-#define TASK_STACK_SIZER 4096U
+
+#define ERROR_HANDLING_UART UART1
 
 #endif // OS_DEFS_H

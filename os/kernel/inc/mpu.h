@@ -23,10 +23,6 @@ typical configuration using the MPU, this bit will be set to 1. */
 #define MPU_CTRL_PRIVDEFENA                                                    \
   BIT(2) // enable privileged access to default memory map
 
-/* If a program accesses a memory location that is prohibited by the MPU, the
-processor generates a memory management fault. This causes a fault exception,
-and might cause termination of the process in an OS environment. */
-
 void mpu_enable();
 void mpu_disable();
 void mpu_init();

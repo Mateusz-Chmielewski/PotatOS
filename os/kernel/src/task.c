@@ -3,8 +3,8 @@
 #include "scb.h"
 #include "systick.h"
 
-TCB_t osTasks[MAX_TASKS];
-int osCurrentTaks;
+static TCB_t osTasks[MAX_TASKS];
+static int osCurrentTaks;
 
 // context switch
 __attribute((naked)) void pend_sv_handler(void) {
@@ -45,7 +45,7 @@ __attribute((naked)) void pend_sv_handler(void) {
 
 uint32_t osTaskCreate(void (*osTCB_task)(void)) {
   uint32_t *pSP;
-  extern long _estack;
+  // extern long _estack;
   for (int i = 0; i < MAX_TASKS; i++) {
     if (osTasks[i].current_state == TASK_INVALID_ID_STATE) {
       osTasks[i].task_handler = osTCB_task;

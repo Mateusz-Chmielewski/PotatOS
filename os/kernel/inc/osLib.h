@@ -1,6 +1,7 @@
 #ifndef OS_LIB_H
 #define OS_LIB_H
 
+#include "system_calls.h"
 #include "task.h"
 #include "uart.h"
 #include <stdbool.h>
@@ -10,13 +11,13 @@ void echo(uart_handle_t *uart) {
   while (usart_data_available(uart)) {
     uint8_t buf[2];
     uint8_t x;
-    (void)usart_read(uart, &x, 1);
+    (void)usart_syscall_read(uart, &x, 1);
     buf[0] = x;
     buf[1] = '\0';
     if (x == 13) {
-      usart_write(uart, (uint8_t *)"\n", 1);
+      usart_syscall_write(uart, (uint8_t *)"\n", 1);
     } else {
-      usart_write(uart, buf, 1);
+      usart_syscall_write(uart, buf, 1);
     }
   }
 }
@@ -64,7 +65,7 @@ void itoa(int n, char s[]) {
   i = 0;
   do {                     /* generate digits in reverse order */
     s[i++] = n % 10 + '0'; /* get next digit */
-  } while ((n /= 10) > 0); /* delete it */
+  } while ((n /= 10) > 0);
   if (sign < 0)
     s[i++] = '-';
   s[i] = '\0';
@@ -77,7 +78,7 @@ void cli(uart_handle_t *uart) {
   while (1) {
     while (usart_data_available(uart)) {
       uint8_t x;
-      (void)usart_read(uart, &x, 1);
+      (void)usart_syscall_read(uart, &x, 1);
       buf[pos] = x;
       buf[pos + 1] = '\0';
 
@@ -86,26 +87,27 @@ void cli(uart_handle_t *uart) {
       buf2[1] = '\0';
 
       if (x == 13) {
-        usart_write(uart, (uint8_t *)"\n", 1);
+        usart_syscall_write(uart, (uint8_t *)"\n", 1);
         pos = 0;
       } else {
-        usart_write(uart, buf2, 1);
+        usart_syscall_write(uart, buf2, 1);
         pos++;
       }
 
       if (str_cmp(buf, "hello\r")) {
         uint8_t msg[] = "kernel odpowiada siema!\n";
-        usart_write(uart, msg, length(msg));
+        usart_syscall_write(uart, msg, length(msg));
       }
       if (str_cmp(buf, "tasks\r")) {
         uint8_t msg[] = "running tasks count: ";
-        usart_write(uart, msg, length(msg));
+        usart_syscall_write(uart, msg, length(msg));
 
         uint32_t tasks_count = getTasksCount();
         char tasks_count_str[10];
         itoa(tasks_count, tasks_count_str);
 
-        usart_write(uart, (uint8_t *)tasks_count_str, length(tasks_count_str));
+        usart_syscall_write(uart, (uint8_t *)tasks_count_str,
+                            length(tasks_count_str));
       }
     }
   }

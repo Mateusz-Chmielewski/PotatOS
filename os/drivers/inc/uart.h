@@ -41,4 +41,6 @@ uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data,
                     const uint32_t length);
 bool usart_data_available(struct uart_handle_t *uart_handle);
 
+void usart_write2(struct uart *uart, uint8_t *data, const uint32_t length);
+
 #endif // UART_H

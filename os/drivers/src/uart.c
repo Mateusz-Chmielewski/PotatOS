@@ -110,6 +110,14 @@ void usart_write_byte(struct uart_handle_t *uart_handle, uint8_t data) {
   uart_handle->uart->DR = data;
 }
 
+void usart_write2(struct uart *uart, uint8_t *data, const uint32_t length) {
+  for (uint32_t i = 0; i < length; i++) {
+    while (!(uart->SR & USART_FLAG_TXE))
+      ;
+    uart->DR = data[i];
+  }
+};
+
 uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data,
                     const uint32_t length) {
   if (length == 0) {

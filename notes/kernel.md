@@ -75,6 +75,8 @@ https://www.eng.auburn.edu/~nelson/courses/elec5260_6260/slides/ARM%20STM32F476%
 
 ![[Pasted image 20241130193808.png]]
 
+![[Pasted image 20241201143346.png]]
+
 # Context switching
 
 https://interrupt.memfault.com/blog/arm-cortex-m-exceptions-and-nvic#built-in-exceptions
