@@ -129,6 +129,16 @@ void osCheckBlockedTasks() {
   }
 }
 
+uint32_t getTasksCount() {
+  uint32_t count = 0;
+  for (int i = 0; i < MAX_TASKS; i++) {
+    if (osTasks[i].current_state != TASK_INVALID_ID_STATE) {
+      count++;
+    }
+  }
+  return count;
+}
+
 void idleTask(void) {
   while (1)
     ;

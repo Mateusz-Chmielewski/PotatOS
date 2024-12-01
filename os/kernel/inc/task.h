@@ -21,4 +21,6 @@ void osInitalizeTCB(void);
 void osDeleteThread();
 void osCheckBlockedTasks();
 void idleTask(void);
+uint32_t getTasksCount();
+
 #endif // TASK_H

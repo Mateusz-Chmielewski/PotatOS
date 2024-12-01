@@ -1,4 +1,5 @@
 #include "system_calls.h"
+#include "uart.h"
 
 __attribute((naked)) void sv_call_handler(void) {
   __asm volatile(
@@ -28,13 +29,13 @@ static void svc_handler_main(uint32_t *stack_frame) // it is in r0
   uint8_t svc_number = svc_instruction & 0xFF; // Extract SVC number
 
   switch (svc_number) {
-  case SYS_USART_WRITE:
+  case SYS_USART1_WRITE:
     extern uart_handle_t uart1;
     usart_write(&uart1, (uint8_t *)stack_frame[0], (uint32_t)stack_frame[1]);
     break;
-  case SYS_USART_READ:
-    usart_read((uart_handle_t *)stack_frame[0], (uint8_t *)stack_frame[1],
-               (uint32_t)stack_frame[2]);
+  case SYS_USART1_READ:
+    extern uart_handle_t uart1;
+    usart_read(&uart1, (uint8_t *)stack_frame[0], (uint32_t)stack_frame[1]);
     break;
   default:
     break;
@@ -53,11 +54,18 @@ void chuj(uint32_t x, uint32_t y, uint32_t z) {
                  : "r"(x), "r"(y), "r"(z));
 }
 
-void usart_syscall_write(uint32_t *data, uint32_t length) {
-  __asm volatile("svc %0 \n" : : "i"(SYS_USART_WRITE));
+void usart1_syscall_write(uint32_t *data, uint32_t length) {
+  __asm volatile("svc %0 \n" : : "i"(SYS_USART1_WRITE));
 }
 
-void usart_syscall_read(struct uart_handle_t *uart_handle, char *buffer,
-                        uint32_t length) {
-  __asm volatile("svc %0 \n" : : "i"(SYS_USART_READ));
+void usart2_syscall_write(uint32_t *data, uint32_t length) {
+  __asm volatile("svc %0 \n" : : "i"(SYS_USART2_WRITE));
+}
+
+void usart3_syscall_write(uint32_t *data, uint32_t length) {
+  __asm volatile("svc %0 \n" : : "i"(SYS_USART3_WRITE));
+}
+
+void usart1_syscall_read(char *buffer, uint32_t length) {
+  __asm volatile("svc %0 \n" : : "i"(SYS_USART1_READ));
 }

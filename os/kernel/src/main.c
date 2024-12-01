@@ -1,11 +1,10 @@
-#include "common.h"
-#include "osLib.h"
 #include "rcc.h"
-#include "systick.h"
+#include "system_calls.h"
 #include "uart.h"
 
 // os stuff
 #include "os.h"
+#include "osLib.h"
 #include "task.h"
 
 uart_handle_t uart1 = {UART1, 0};
@@ -14,12 +13,12 @@ uart_handle_t uart3 = {UART3, 0};
 
 void task1(void) {
 
-  uint8_t greet[] = "Hello in kernel!\n";
-  usart_write(&uart2, greet, length(greet));
+  {
+    uint8_t greet[] = "Hello in kernel cli!\n";
+    usart_write(&uart1, greet, length(greet));
+  }
 
-  while (1) {
-    echo(&uart2);
-  };
+  cli(&uart1);
 }
 
 void task2(void) {
@@ -27,8 +26,10 @@ void task2(void) {
   char msg2[2] = {'a', '\n'};
 
   while (1) {
-    usart_write(&uart1, (uint8_t *)msg, length(msg));
-    usart_write(&uart1, (uint8_t *)msg2, 2);
+    // usart_write(&uart2, (uint8_t *)msg, length(msg));
+    usart1_syscall_write((uint8_t *)msg, length(msg));
+    usart1_syscall_write((uint8_t *)msg, length(msg));
+    // usart_write(&uart2, (uint8_t *)msg2, 2);
 
     msg2[0]++;
     if (msg2[0] > 'z') {
@@ -57,7 +58,7 @@ void task3(void) {
 }
 
 int main(void) {
-  // using MSP stack
+  // peripheral stuff
   rcc_gpioa_enable();
   rcc_usart1_enable();
   rcc_usart2_enable();
@@ -67,6 +68,7 @@ int main(void) {
   uart_init(&uart2, 9600U);
   uart_init(&uart3, 9600U);
 
+  // os stuff
   osEnableProcessorFaults();
   initScheduler();
 
