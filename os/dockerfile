@@ -1,7 +1,4 @@
 FROM antmicro/renode
 
-#mount folder build to /renode
-COPY ./stm32.resc /renode/
-
-ENTRYPOINT ["renode", "--console", "/renode/stm32.resc"]
+ENTRYPOINT ["renode", "--console", "/renode/stm32f4.resc"]
 

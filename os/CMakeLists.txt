@@ -60,37 +60,5 @@ add_custom_command(
     COMMENT "Creating firmware.bin"
 )
 
-# QEMU run target (with graphics)
-add_custom_target(rung
-    COMMAND qemu-system-arm -M netduinoplus2 -kernel firmware.bin
-    DEPENDS firmware.bin
-    COMMENT "Running firmware.bin in QEMU with graphics"
-)
-
-# QEMU run target (no graphics)
-add_custom_target(run
-    COMMAND qemu-system-arm -M netduinoplus2 -nographic -kernel firmware.bin
-    DEPENDS firmware.bin
-    COMMENT "Running firmware.bin in QEMU without graphics"
-)
-
-# QEMU run target (debugging)
-add_custom_target(rundbg
-    COMMAND qemu-system-arm -M netduinoplus2 -s -S -kernel firmware.elf
-    DEPENDS firmware.elf
-    COMMENT "Running firmware.elf in QEMU with debugging enabled"
-)
-
-#open gdb on 3333 and run firmware.elf use gdb-mulitarch
-add_custom_target(gdb
-    COMMAND gdb-multiarch firmware.elf -ex "target remote localhost:3333"
-    DEPENDS firmware.elf
-    COMMENT "Running firmware.elf in GDB"
-)
-
-
-
-
-
 # Clean target
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "firmware.bin;firmware.elf;firmware.map")

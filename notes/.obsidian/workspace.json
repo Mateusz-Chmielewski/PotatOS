@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "kernel.md",
+                "file": "Budowanie i Renode.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kernel"
+              "title": "Budowanie i Renode"
             }
           },
           {
@@ -287,6 +287,12 @@
   },
   "active": "6439238b9ac94637",
   "lastOpenFiles": [
+    "ARM ogólnie.md",
+    "kernel.md",
+    "Budowanie i Renode.md",
+    "Qemu.md",
+    "TODO.md",
+    "Zródła.md",
     "attachments/Pasted image 20241201143346.png",
     "attachments/Pasted image 20241130193808.png",
     "attachments/Pasted image 20241130193757.png",
@@ -296,16 +302,9 @@
     "attachments/Pasted image 20241124133937.png",
     "attachments/Pasted image 20241124133857.png",
     "attachments/Pasted image 20241124133703.png",
-    "Zródła.md",
-    "Qemu.md",
-    "OS'y.md",
-    "kernel.md",
     "Untitled.md",
     "attachments/Pasted image 20241123130942.png",
-    "attachments/Pasted image 20241123130739.png",
-    "renode.md",
     "Untitled",
-    "TODO.md",
     "attachments"
   ]
 }
