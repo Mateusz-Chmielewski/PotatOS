@@ -31,65 +31,65 @@ void task1(void) {
 
 void task2(void) {
 
-  uint16_t ledGreen = PIN('B', 0);        // Green LED
-  RCC->AHB1ENR |= BIT(PINBANK(ledGreen)); // Enable GPIO clock for LED
-  gpio_set_mode(ledGreen, GPIO_MODE_OUT); // Set blue LED to output mode
+  uint16_t ledGreen = PIN('B', 0);                // Green LED
+  syscall_gpio_set_mode(ledGreen, GPIO_MODE_OUT); // Set blue LED to output mode
 
   while (1) {
-    gpio_write(ledGreen, 1);
-    task_delay(1000);
-    gpio_write(ledGreen, 0);
-    task_delay(1000);
+    syscall_gpio_write(ledGreen, 1);
+    syscall_delay(1000);
+    syscall_gpio_write(ledGreen, 0);
+    syscall_delay(1000);
   }
 }
 
 void task3(void) {
 
-  uint16_t ledRed = PIN('B', 14);       // RED LED
-  RCC->AHB1ENR |= BIT(PINBANK(ledRed)); // Enable GPIO clock for LED
-  gpio_set_mode(ledRed, GPIO_MODE_OUT); // Set blue LED to output mode
+  uint16_t ledRed = PIN('B', 14);               // RED LED
+  syscall_gpio_set_mode(ledRed, GPIO_MODE_OUT); // Set blue LED to output mode
 
   while (1) {
-    gpio_write(ledRed, 1);
-    task_delay(2000);
-    gpio_write(ledRed, 0);
-    task_delay(2000);
+    syscall_gpio_write(ledRed, 1);
+    syscall_delay(2000);
+    syscall_gpio_write(ledRed, 0);
+    syscall_delay(2000);
   }
 }
 
 void task6(void) {
-  uint16_t ledBlue = PIN('B', 7);        // Blue LED
-  RCC->AHB1ENR |= BIT(PINBANK(ledBlue)); // Enable GPIO clock for LED
-  gpio_set_mode(ledBlue, GPIO_MODE_OUT); // Set blue LED to output mode
+  uint16_t ledBlue = PIN('B', 7);                // Blue LED
+  syscall_gpio_set_mode(ledBlue, GPIO_MODE_OUT); // Set blue LED to output mode
 
-  uint16_t buttonB1 = PIN('C', 13);       // Blue button
-  RCC->AHB1ENR |= BIT(PINBANK(buttonB1)); // Enable GPIO clock for button
-  gpio_set_mode(buttonB1, GPIO_MODE_IN);  // Set button to input mode
+  uint16_t buttonB1 = PIN('C', 13);              // Blue button
+  syscall_gpio_set_mode(buttonB1, GPIO_MODE_IN); // Set button to input mode
 
   int toggle = 0;
   int ledState = 0;
 
   while (1) {
-    //on button press 
-    if (gpio_read(buttonB1) == 1) {
-      task_delay(50);
+    uint8_t read = 0;
 
-      if (gpio_read(buttonB1) == 1 && toggle == 0) {
+    // on button press
+    syscall_gpio_read(buttonB1, &read);
+    if (read == 1) {
+      syscall_delay(50);
+      syscall_gpio_read(buttonB1, &read);
+
+      if (read == 1 && toggle == 0) {
         toggle = 1;
 
         ledState = !ledState;
-        gpio_write(ledBlue, ledState);
+        syscall_gpio_write(ledBlue, ledState);
       }
     } else {
       toggle = 0;
     }
 
     //on button hold
-    // if (gpio_read(buttonB1) == 1) {
-    //   gpio_write(ledBlue, 1);
-
+    // syscall_gpio_read(buttonB1, &read);
+    //  if (read == 1) {
+    //   syscall_gpio_write(ledBlue, 1);
     // } else {
-    //   gpio_write(ledBlue, 0);
+    //   syscall_gpio_write(ledBlue, 0);
     // }
   }
 }
@@ -98,20 +98,15 @@ void task4(void) {
   char *msg = "Task 4 -- ";
   char msg2[3] = {'a', '\n', '\r'};
 
-  uint16_t ledRed = PIN('B', 7);        // RED LED
-  RCC->AHB1ENR |= BIT(PINBANK(ledRed)); // Enable GPIO clock for LED
-  gpio_set_mode(ledRed, GPIO_MODE_OUT); // Set blue LED to output mode
-
   while (1) {
-    usart_write(&uart3, (uint8_t *)msg, length(msg));
-    usart_write(&uart3, (uint8_t *)msg2, 3);
-
+    usart_syscall_write(&uart3, (uint8_t *)msg, length(msg));
+    usart_syscall_write(&uart3, (uint8_t *)msg2, 3);
     msg2[0]++;
     if (msg2[0] > 'z') {
       msg2[0] = 'a';
     }
 
-    task_delay(5000);
+    syscall_delay(5000);
   }
 }
 
@@ -120,12 +115,9 @@ void task5(void) {
   char msg2[3] = {'a', '\n', '\r'};
 
   while (1) {
-    // usart_syscall_write(&uart3, (uint8_t *)msg, length(msg));
-    // usart_syscall_write(&uart3, (uint8_t *)msg2, 3);
-
-    task_delay(10000);
-    usart_write(&uart3, (uint8_t *)msg, length(msg));
-    usart_write(&uart3, (uint8_t *)msg2, 3);
+    syscall_delay(10000);
+    usart_syscall_write(&uart3, (uint8_t *)msg, length(msg));
+    usart_syscall_write(&uart3, (uint8_t *)msg2, 3);
 
     msg2[0]++;
     if (msg2[0] > 'z') {
@@ -146,8 +138,8 @@ int main(void) {
   uart_init(&uart2, 9600U);
   uart_init(&uart3, 9600U);
 
-  // to cos wywala chyba mapowanie pamięci inne data access violation
-  // mpu_init();
+  //memory protection unit
+  mpu_init();
 
   // os stuff
   osEnableProcessorFaults();

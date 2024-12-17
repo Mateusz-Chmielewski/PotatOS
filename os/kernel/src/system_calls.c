@@ -1,6 +1,7 @@
 #include "system_calls.h"
 #include "task.h"
 #include "uart.h"
+#include "gpio.h"
 
 __attribute((naked)) void sv_call_handler(void) {
   __asm volatile(
@@ -36,6 +37,18 @@ static void svc_handler_main(uint32_t *stack_frame) // it is in r0
   case SYS_DELAY:
     task_delay(stack_frame[0]);
     break;
+  case SYS_GPIO_SET_MODE:
+    gpio_set_mode(stack_frame[0], stack_frame[1]);
+    break;
+  case SYS_GPIO_WRITE:
+    gpio_write(stack_frame[0], stack_frame[1]);
+    break;
+  case SYS_GPIO_READ: 
+    uint8_t r = gpio_read(stack_frame[0]);
+    uint8_t *val = (uint8_t *)stack_frame[1];
+    *val = r;
+    break;
+
   default:
     break;
   }
@@ -54,3 +67,15 @@ void usart_syscall_read(uart_handle_t *usart, char *buffer, uint32_t length) {
 void syscall_delay(uint32_t ms) {
   __asm volatile("svc %0 \n" : : "i"(SYS_DELAY));
 }
+
+void syscall_gpio_set_mode(uint16_t pin, uint8_t mode){
+  __asm volatile("svc %0 \n" : : "i"(SYS_GPIO_SET_MODE));
+};
+
+void syscall_gpio_write(uint16_t pin, bool val){
+  __asm volatile("svc %0 \n" : : "i"(SYS_GPIO_WRITE));
+};
+
+void syscall_gpio_read(uint16_t pin, uint8_t *val){
+  __asm volatile("svc %0 \n" : : "i"(SYS_GPIO_READ));
+};

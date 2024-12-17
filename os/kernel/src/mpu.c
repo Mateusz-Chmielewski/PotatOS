@@ -132,6 +132,7 @@ void mpu_init() {
               MPU_REGION_SIZE_128KB |     // 128KB size
               (1 << MPU_RASR_ENABLE_Pos); // Enable region
 
+
   // Region 2: Peripheral (RW)
   MPU->RNR = 2;                           // Select Region 0
   MPU->RBAR = PERIPHERAL_ORIGIN;          // Base Address
@@ -146,6 +147,14 @@ void mpu_init() {
                                           // privileged and unprivileged)
               MPU_REGION_SIZE_2MB |       // 2MB size
               (1 << MPU_RASR_ENABLE_Pos); // Enable region */
+
+  //region 4: sram from 0x2002 0000
+  MPU->RNR = 4;                           // Select Region 0
+  MPU->RBAR = 0x20020000;                 // Base Address
+  MPU->RASR = (MPU_REGION_FULL_ACCESS) |  // Full Access (RW for both
+                                          // privileged and unprivileged)
+              MPU_REGION_SIZE_64KB |     // 128KB size
+              (1 << MPU_RASR_ENABLE_Pos); // Enable region
 
   // Enable the MPU with default memory map for privileged mode
   MPU->CTRL =

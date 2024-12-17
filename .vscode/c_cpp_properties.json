@@ -4,7 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/os/kernel/inc"
+                "${workspaceFolder}/os/kernel/inc",
+                "${workspaceFolder}/os/drivers/inc",
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
