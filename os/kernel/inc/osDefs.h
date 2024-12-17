@@ -12,6 +12,6 @@
 
 #define MAX_TASKS 10
 
-#define ERROR_HANDLING_UART UART1
+#define ERROR_HANDLING_UART UART3
 
 #endif // OS_DEFS_H
