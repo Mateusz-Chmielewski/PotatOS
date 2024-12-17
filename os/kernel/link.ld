@@ -1,6 +1,6 @@
 ENTRY(_reset);
 MEMORY {
-  flash(rx)  : ORIGIN = 0x08000000, LENGTH = 1024k
+  flash(rx)  : ORIGIN = 0x08000000, LENGTH = 2048k
   sram(rwx) : ORIGIN = 0x20000000, LENGTH = 112k
 }
 _estack     = ORIGIN(sram) + LENGTH(sram);    /* stack points to end of SRAM */
