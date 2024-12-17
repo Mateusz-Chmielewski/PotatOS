@@ -57,16 +57,40 @@ void task3(void) {
   }
 }
 
-void task6(void){
-  uint16_t ledBlue = PIN('B', 7);       // RED LED
+void task6(void) {
+  uint16_t ledBlue = PIN('B', 7);        // Blue LED
   RCC->AHB1ENR |= BIT(PINBANK(ledBlue)); // Enable GPIO clock for LED
   gpio_set_mode(ledBlue, GPIO_MODE_OUT); // Set blue LED to output mode
 
+  uint16_t buttonB1 = PIN('C', 13);       // Blue button
+  RCC->AHB1ENR |= BIT(PINBANK(buttonB1)); // Enable GPIO clock for button
+  gpio_set_mode(buttonB1, GPIO_MODE_IN);  // Set button to input mode
+
+  int toggle = 0;
+  int ledState = 0;
+
   while (1) {
-    gpio_write(ledBlue, 1);
-    task_delay(3000);
-    gpio_write(ledBlue, 0);
-    task_delay(3000);
+    //on button press 
+    if (gpio_read(buttonB1) == 1) {
+      task_delay(50);
+
+      if (gpio_read(buttonB1) == 1 && toggle == 0) {
+        toggle = 1;
+
+        ledState = !ledState;
+        gpio_write(ledBlue, ledState);
+      }
+    } else {
+      toggle = 0;
+    }
+
+    //on button hold
+    // if (gpio_read(buttonB1) == 1) {
+    //   gpio_write(ledBlue, 1);
+
+    // } else {
+    //   gpio_write(ledBlue, 0);
+    // }
   }
 }
 
@@ -74,7 +98,7 @@ void task4(void) {
   char *msg = "Task 4 -- ";
   char msg2[3] = {'a', '\n', '\r'};
 
-  uint16_t ledRed = PIN('B', 7);       // RED LED
+  uint16_t ledRed = PIN('B', 7);        // RED LED
   RCC->AHB1ENR |= BIT(PINBANK(ledRed)); // Enable GPIO clock for LED
   gpio_set_mode(ledRed, GPIO_MODE_OUT); // Set blue LED to output mode
 
