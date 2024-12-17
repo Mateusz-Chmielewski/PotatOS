@@ -20,6 +20,20 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "name": "ST-Link: Debug Application",
+      "cwd": "${workspaceRoot}",
+      "executable": "${workspaceRoot}/os/build/firmware.elf",
+      "servertype": "stutil",
+      "request": "launch",
+      "type": "cortex-debug",
+      "device": "STM32F439ZI",
+      "runToEntryPoint": "main",
+      "interface": "swd",
+      "gdbPath": "/usr/bin/gdb-multiarch",
+      "armToolchainPath": "/usr/bin/arm-none-eabi-gcc",
+      "preLaunchTask": "build_debug"
     }
   ]
 }
