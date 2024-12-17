@@ -57,9 +57,26 @@ void task3(void) {
   }
 }
 
+void task6(void){
+  uint16_t ledBlue = PIN('B', 7);       // RED LED
+  RCC->AHB1ENR |= BIT(PINBANK(ledBlue)); // Enable GPIO clock for LED
+  gpio_set_mode(ledBlue, GPIO_MODE_OUT); // Set blue LED to output mode
+
+  while (1) {
+    gpio_write(ledBlue, 1);
+    task_delay(3000);
+    gpio_write(ledBlue, 0);
+    task_delay(3000);
+  }
+}
+
 void task4(void) {
   char *msg = "Task 4 -- ";
   char msg2[3] = {'a', '\n', '\r'};
+
+  uint16_t ledRed = PIN('B', 7);       // RED LED
+  RCC->AHB1ENR |= BIT(PINBANK(ledRed)); // Enable GPIO clock for LED
+  gpio_set_mode(ledRed, GPIO_MODE_OUT); // Set blue LED to output mode
 
   while (1) {
     usart_write(&uart3, (uint8_t *)msg, length(msg));
@@ -70,8 +87,7 @@ void task4(void) {
       msg2[0] = 'a';
     }
 
-    task_delay(1000);
-
+    task_delay(5000);
   }
 }
 
@@ -83,7 +99,7 @@ void task5(void) {
     // usart_syscall_write(&uart3, (uint8_t *)msg, length(msg));
     // usart_syscall_write(&uart3, (uint8_t *)msg2, 3);
 
-    task_delay(2000);
+    task_delay(10000);
     usart_write(&uart3, (uint8_t *)msg, length(msg));
     usart_write(&uart3, (uint8_t *)msg2, 3);
 
@@ -91,7 +107,6 @@ void task5(void) {
     if (msg2[0] > 'z') {
       msg2[0] = 'a';
     }
-
   }
 }
 
@@ -119,9 +134,9 @@ int main(void) {
   osTaskCreate(task3);
   osTaskCreate(task4);
   osTaskCreate(task5);
+  osTaskCreate(task6);
 
   startScheduler();
-
 
   // never reach here
   while (1)
