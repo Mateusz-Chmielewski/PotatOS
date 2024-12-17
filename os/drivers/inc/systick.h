@@ -25,4 +25,6 @@ void systick_init(uint32_t ticks);
 void sys_tick_handler(void);
 uint64_t systick_get_ticks(void);
 
+void delay(uint32_t ms);
+
 #endif // SYSTICK_H
