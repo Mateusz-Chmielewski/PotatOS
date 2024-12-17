@@ -27,5 +27,6 @@ typedef enum {
 void gpio_set_mode(uint16_t pin, gpio_mode mode); // set pin mode
 void gpio_set_af(uint16_t pin, uint8_t af);       // set alternate function
 void gpio_write(uint16_t pin, bool val);          // set pin to high or low
+uint8_t gpio_read(uint16_t pin);                      // read pin value
 
 #endif // GPIO_H
