@@ -121,7 +121,7 @@ void mpu_init() {
   MPU->RBAR = FLASH_ORIGIN;               // Base Address
   MPU->RASR = (MPU_REGION_FULL_ACCESS) |  // Full Access (RW for both
                                           // privileged and unprivileged)
-              MPU_REGION_SIZE_1MB |       // 1MB size
+              MPU_REGION_SIZE_2MB |       // 2MB size
               (1 << MPU_RASR_ENABLE_Pos); // Enable region
 
   // Region 1: SRAM (RW)
@@ -144,7 +144,7 @@ void mpu_init() {
   MPU->RBAR = 0x00000000;                 // Base Address
   MPU->RASR = (MPU_REGION_FULL_ACCESS) |  // Full Access (RW for both
                                           // privileged and unprivileged)
-              MPU_REGION_SIZE_1MB |       // 1MB size
+              MPU_REGION_SIZE_2MB |       // 2MB size
               (1 << MPU_RASR_ENABLE_Pos); // Enable region */
 
   // Enable the MPU with default memory map for privileged mode
