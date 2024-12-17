@@ -1,4 +1,4 @@
-#define IRQ_COUNT 82
+#define IRQ_COUNT 91
 
 typedef void (*fn_ptr)(void);
 
