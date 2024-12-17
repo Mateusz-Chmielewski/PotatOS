@@ -28,3 +28,9 @@ void sys_tick_handler(void) {
 }
 
 uint64_t systick_get_ticks(void) { return s_ticks; }
+
+void delay(uint32_t ms) {
+  uint32_t until = s_ticks + ms;
+  while (s_ticks < until)
+    (void)0;
+};
