@@ -22,7 +22,7 @@ __attribute((naked)) void osSwitchSPToPSP(void) {
                        // (return value is in R0)
 
       // change SP to PSP using control register
-      "MOV R0, #0x03 \n" // 0x02 - 10 in binary, set SPSEL bit to 1
+      "MOV R0, #0x02 \n" // 0x02 - 10 in binary, set SPSEL bit to 1
       "MSR CONTROL, R0 \n"
       // LR here has the return address of the function that called this
       // function
