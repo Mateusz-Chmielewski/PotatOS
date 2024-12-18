@@ -87,7 +87,7 @@ void cli(uart_handle_t *uart) {
       buf2[1] = '\0';
 
       if (x == 13) {
-        usart_syscall_write(uart, (uint8_t *)"\n", 1);
+        usart_syscall_write(uart, (uint8_t *)"\r\n", 2);
         pos = 0;
       } else {
         usart_syscall_write(uart, buf2, 1);
@@ -95,11 +95,11 @@ void cli(uart_handle_t *uart) {
       }
 
       if (str_cmp(buf, "hello\r")) {
-        uint8_t msg[] = "kernel odpowiada siema!\n";
+        uint8_t msg[] = "\rkernel odpowiada\n\r";
         usart_syscall_write(uart, msg, length(msg));
       }
       if (str_cmp(buf, "tasks\r")) {
-        uint8_t msg[] = "running tasks count: ";
+        uint8_t msg[] = "\rrunning tasks count: ";
         usart_syscall_write(uart, msg, length(msg));
 
         uint32_t tasks_count = getTasksCount();
@@ -108,6 +108,8 @@ void cli(uart_handle_t *uart) {
 
         usart_syscall_write(uart, (uint8_t *)tasks_count_str,
                             length(tasks_count_str));
+
+        usart_syscall_write(uart, (uint8_t *)"\n\r", 2);
       }
     }
   }
