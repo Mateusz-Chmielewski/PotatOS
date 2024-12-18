@@ -4,23 +4,19 @@ using sysbus
 $bin_path?="/app/build/firmware.elf"
 
 mach create "stm32"
-machine LoadPlatformDescription @platforms/cpus/stm32f4.repl
+machine LoadPlatformDescription @platforms/cpus/stm32f429.repl
 
 sysbus LoadELF $bin_path
 sysbus.nvic Frequency 16000000
 
-showAnalyzer usart1
-showAnalyzer usart2
 showAnalyzer usart3
 machine StartGdbServer 3333
-
 
 start
 macro reset
 """
     pause
     sysbus LoadELF $bin_path
-    sysbus.nvic Frequency 16000000
     start
 """
 

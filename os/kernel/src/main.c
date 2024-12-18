@@ -54,7 +54,7 @@ void task3(void) {
   }
 }
 
-void task6(void) {
+void task4(void) {
   uint16_t ledBlue = PIN('B', 7);                // Blue LED
   syscall_gpio_set_mode(ledBlue, GPIO_MODE_OUT); // Set blue LED to output mode
 
@@ -93,8 +93,8 @@ void task6(void) {
   }
 }
 
-void task4(void) {
-  char *msg = "Task 4 -- ";
+void task5(void) {
+  char *msg = "Task 5 -- ";
   char msg2[3] = {'a', '\n', '\r'};
 
   while (1) {
@@ -109,8 +109,8 @@ void task4(void) {
   }
 }
 
-void task5(void) {
-  char *msg = "Task 5 -- ";
+void task6(void) {
+  char *msg = "Task 6 -- ";
   char msg2[3] = {'a', '\n', '\r'};
 
   while (1) {
