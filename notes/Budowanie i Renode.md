@@ -44,3 +44,15 @@ startowanie kontenera pozniej: docker start -ai stm-container
 aby wgrac nowy soft należy zbudowac nowy soft i wpisać machine Reset w terminalu renode
 
 Debugowanie działa z launch vsc, potrzebuje pakietu gdb-multiarch (sudo apt install gdb-multiarch)
+
+
+### st-link
+
+https://github.com/stlink-org/stlink
+
+sudo apt install stlink-tools
+
+w folderze build
+
+st-flash --reset write firmware.bin 0x8000000
+
