@@ -2,7 +2,6 @@
 #include "mpu.h"
 #include "rcc.h"
 #include "system_calls.h"
-#include "systick.h"
 #include "uart.h"
 
 // os stuff
