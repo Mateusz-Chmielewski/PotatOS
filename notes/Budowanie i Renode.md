@@ -56,3 +56,6 @@ w folderze build
 
 st-flash --reset write firmware.bin 0x8000000
 
+monitor:
+cu -l /dev/ttyACM0 -s 9600
+
