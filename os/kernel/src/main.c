@@ -9,9 +9,9 @@
 #include "osLib.h"
 #include "task.h"
 
-uart_handle_t uart1 = {UART1, 0};
-uart_handle_t uart2 = {UART2, 0};
-uart_handle_t uart3 = {UART3, 0};
+UartHandler uart1 = {UART1, 0};
+UartHandler uart2 = {UART2, 0};
+UartHandler uart3 = {UART3, 0};
 
 // taski działają w trybie unprivileged
 // dostęp do peryferiów tylko w trybie privileged
@@ -83,13 +83,13 @@ void task4(void) {
       toggle = 0;
     }
 
-    //on button hold
-    // syscall_gpio_read(buttonB1, &read);
-    //  if (read == 1) {
-    //   syscall_gpio_write(ledBlue, 1);
-    // } else {
-    //   syscall_gpio_write(ledBlue, 0);
-    // }
+    // on button hold
+    //  syscall_gpio_read(buttonB1, &read);
+    //   if (read == 1) {
+    //    syscall_gpio_write(ledBlue, 1);
+    //  } else {
+    //    syscall_gpio_write(ledBlue, 0);
+    //  }
   }
 }
 
@@ -137,7 +137,7 @@ int main(void) {
   uart_init(&uart2, 9600U);
   uart_init(&uart3, 9600U);
 
-  //memory protection unit
+  // memory protection unit
   mpu_init();
 
   // os stuff

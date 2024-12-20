@@ -6,12 +6,12 @@
 #include <stdint.h>
 
 // https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf#page=246
-struct systick {
+typedef struct Systick {
   volatile uint32_t CTRL, LOAD, VAL, CALIB;
-};
+} Systick;
 
 // The base address of the SysTick register block is 0xE000 E010.
-#define SYSTICK ((struct systick *)SYSTICK_BASE)
+#define SYSTICK ((Systick *)SYSTICK_BASE)
 
 #define SYSTICK_CTRL_ENABLE BIT(0)  // enables counter
 #define SYSTICK_CTRL_TICKINT BIT(1) // enables interrupt

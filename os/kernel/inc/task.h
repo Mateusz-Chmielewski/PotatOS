@@ -12,7 +12,7 @@ typedef struct {
   uint32_t current_state;
   uint32_t block_count;
   void (*task_handler)(void);
-} TCB_t;
+} TaskControlBlock;
 
 uint32_t osTaskCreate(void (*osTCB_task)(void));
 void task_delay(uint32_t tick_count);
@@ -20,7 +20,7 @@ void osGetNextTask(void);
 void osInitalizeTCB(void);
 void osDeleteThread();
 void osCheckBlockedTasks();
-void idleTask(void);
+void idle_task(void);
 uint32_t getTasksCount();
 
 #endif // TASK_H

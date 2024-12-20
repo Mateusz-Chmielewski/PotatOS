@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-void echo(uart_handle_t *uart) {
+void echo(UartHandler *uart) {
   while (usart_data_available(uart)) {
     uint8_t buf[2];
     uint8_t x;
@@ -72,7 +72,7 @@ void itoa(int n, char s[]) {
   reverse(s);
 }
 
-void cli(uart_handle_t *uart) {
+void cli(UartHandler *uart) {
   uint8_t buf[40];
   int pos = 0;
   while (1) {

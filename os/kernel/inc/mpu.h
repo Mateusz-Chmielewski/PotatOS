@@ -3,13 +3,27 @@
 
 #include <stdint.h>
 
-// https://www.st.com/resource/en/datasheet/cd00237391.pdf#page=20
-// https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf#page=193&zoom=100,165,556
-struct mpu {
-  volatile uint32_t TYPER, CTRL, RNR, RBAR, RASR;
-};
+/*
+Memory Protection Unit (MPU)
 
-#define MPU ((struct mpu *)0xE000ED90)
+The MPU divides the memory map into a number of regions, and defines the
+location, size, access permissions, and memory attributes of each region.
+
+If a program accesses a memory location that is prohibited by the MPU, the
+processor generates a memory management fault. This causes a fault exception,
+and might cause termination of the process in an OS environment. termination of
+the process in an OS environment.
+
+https://www.st.com/resource/en/datasheet/cd00237391.pdf#page=20
+
+https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf#page=193&zoom=100,165,556
+ */
+
+typedef struct Mpu {
+  volatile uint32_t TYPER, CTRL, RNR, RBAR, RASR;
+} Mpu;
+
+#define MPU ((Mpu *)0xE000ED90)
 
 #define MPU_CTRL_ENABLE BIT(0) // enable MPU
 

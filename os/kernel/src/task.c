@@ -3,7 +3,7 @@
 #include "scb.h"
 #include "systick.h"
 
-static TCB_t osTasks[MAX_TASKS];
+static TaskControlBlock osTasks[MAX_TASKS];
 static int osCurrentTaks;
 
 // context switch
@@ -139,7 +139,7 @@ uint32_t getTasksCount() {
   return count;
 }
 
-void idleTask(void) {
+void idle_task(void) {
   while (1)
     ;
 }

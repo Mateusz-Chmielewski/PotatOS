@@ -1,12 +1,17 @@
 #ifndef RCC_H
 #define RCC_H
 
-#include <stdint.h>
-#include "memorymap.h"
 #include "common.h"
+#include "memorymap.h"
+#include <stdint.h>
 
-struct rcc
-{
+/*
+Reset and Clock Control (RCC)
+
+https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page=152
+
+*/
+struct rcc {
   volatile uint32_t CR, PLLCFGR, CFGR, CIR, AHB1RSTR, AHB2RSTR, AHB3RSTR,
       RESERVED0, APB1RSTR, APB2RSTR, RESERVED1[2], AHB1ENR, AHB2ENR, AHB3ENR,
       RESERVED2, APB1ENR, APB2ENR, RESERVED3[2], AHB1LPENR, AHB2LPENR,
