@@ -4,14 +4,14 @@
 #include "ringbuffer.h"
 #include <stdint.h>
 
-static ringbuffer_t usart1_rb = {0};
-static ringbuffer_t usart2_rb = {0};
-static ringbuffer_t usart3_rb = {0};
+static RingBuffer usart1_rb = {0};
+static RingBuffer usart2_rb = {0};
+static RingBuffer usart3_rb = {0};
 static uint8_t usart1_rb_buffer[USART1_BUFFER_SIZE] = {0};
 static uint8_t usart2_rb_buffer[USART2_BUFFER_SIZE] = {0};
 static uint8_t usart3_rb_buffer[USART3_BUFFER_SIZE] = {0};
 
-void uart_init(struct uart_handle_t *uart_handle, unsigned long baud) {
+void uart_init(UartHandler *uart_handle, unsigned long baud) {
   /* USART bidirectional communication requires a minimum of two pins: Receive
   Data In (RX) and Transmit Data Out (TX): */
   // https://controllerstech.com/how-to-setup-uart-using-registers-in-stm32/
@@ -97,20 +97,20 @@ void usart3_isr(void) {
   }
 }
 
-void usart_write(struct uart_handle_t *uart_handle, uint8_t *data,
+void usart_write(UartHandler *uart_handle, uint8_t *data,
                  const uint32_t length) {
   for (uint32_t i = 0; i < length; i++) {
     usart_write_byte(uart_handle, data[i]);
   }
 }
 
-void usart_write_byte(struct uart_handle_t *uart_handle, uint8_t data) {
+void usart_write_byte(UartHandler *uart_handle, uint8_t data) {
   while (!(uart_handle->uart->SR & USART_FLAG_TXE))
     ;
   uart_handle->uart->DR = data;
 }
 
-void usart_write2(struct uart *uart, uint8_t *data, const uint32_t length) {
+void usart_write2(Uart *uart, uint8_t *data, const uint32_t length) {
   for (uint32_t i = 0; i < length; i++) {
     while (!(uart->SR & USART_FLAG_TXE))
       ;
@@ -118,7 +118,7 @@ void usart_write2(struct uart *uart, uint8_t *data, const uint32_t length) {
   }
 };
 
-uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data,
+uint32_t usart_read(UartHandler *uart_handle, uint8_t *data,
                     const uint32_t length) {
   if (length == 0) {
     return 0;
@@ -133,6 +133,6 @@ uint32_t usart_read(struct uart_handle_t *uart_handle, uint8_t *data,
   return length;
 }
 
-bool usart_data_available(struct uart_handle_t *uart_handle) {
+bool usart_data_available(UartHandler *uart_handle) {
   return !ringbuffer_empty(uart_handle->rb);
 }
