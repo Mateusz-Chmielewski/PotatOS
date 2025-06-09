@@ -5,14 +5,14 @@
 
 Before you can build the firmware, make sure you have the required cross-compiler installed:
 
-1. Install the ARM cross-compiler
-On Debian/Ubuntu-based systems:
+1. Install the ARM cross-compiler </br>
+On Debian/Ubuntu-based systems: </br>
 ```sh
 sudo apt install gcc-arm-none-eabi
 ```
 
-2. Create a build directory
-Navigate to the os project directory and create a build folder:
+2. Create a build directory </br>
+Navigate to the os project directory and create a build folder: </br>
 ```sh
 cd os
 mkdir build
@@ -96,3 +96,10 @@ in build folder to flash board use run:
 
 to see terminal monitor communication one can use cu command
 `cu -l /dev/ttyACM0 -s 9600`
+
+
+## Debuging code
+To debug your code using Visual Studio Code (with a launch.json configuration), you'll need to install the GDB multi-architecture debugger:
+```
+sudo apt install gdb-multiarch
+```
