@@ -86,17 +86,71 @@ commands in emulator:
 - q, quit - quits emulator
 - showAnalyzer usart1 - shows uart1 terminal monitor 
 
-## Flashing board
+## Flashing the STM32 Board
 
-https://github.com/stlink-org/stlink </br>
-can be install in debian based distros with: `sudo apt install stlink-tools` </br>
+To flash the STM32 microcontroller, we use the stlink utility.
 
-in build folder to flash board use run:
-`st-flash --reset write firmware.bin 0x8000000`
+1. Install stlink tools
+On Debian-based systems (Ubuntu, WSL, etc.):
 
-to see terminal monitor communication one can use cu command
-`cu -l /dev/ttyACM0 -s 9600`
+```
+sudo apt install stlink-tools
+```
+This provides the st-flash utility to upload binaries to STM32 devices via ST-Link.
 
+### Connecting STM32 USB to WSL
+1. Install usbipd-win on Windows
+In PowerShell (run as Administrator):
+```
+winget install usbipd
+```
+
+2.  List available USB devices
+In PowerShell:
+```
+usbipd list
+```
+Look for the STM32 ST-Link device. Example output:
+```
+BUSID  VID:PID    DEVICE                                                        STATE
+2-1    0483:374b  ST-Link Debug, USB Mass Storage Device                        Shared
+```
+
+4. Attach the device to WSL
+Use the bus ID shown next to the ST-Link in the previous step:
+```
+usbipd attach --busid 2-1 --wsl
+```
+If there is `usbipd: error: Loading vhci_hcd failed.` run in wsl:
+```
+sudo modprobe vhci_hcd
+```
+
+5. Verify connection inside WSL
+```
+lsusb
+```
+
+You should see something like:
+
+```
+Bus 001 Device 002: ID 0483:374b STMicroelectronics ST-LINK/V2.1
+```
+
+### Flashing the firmware
+From the build directory, flash the board:
+
+```
+st-flash --reset write firmware.bin 0x8000000
+```
+This writes the binary to flash memory and resets the MCU.
+
+Serial Monitor (optional)
+To view UART output from the board</br>
+```
+cu -l /dev/ttyACM0 -s 9600
+```
+Replace /dev/ttyACM0 with the correct device if needed (dmesg | grep tty can help you find it).
 
 ## Debuging code
 To debug your code using Visual Studio Code (with a launch.json configuration), you'll need to install the GDB multi-architecture debugger:
